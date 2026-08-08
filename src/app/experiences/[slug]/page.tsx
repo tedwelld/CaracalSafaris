@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import ExperienceActivities from "@/components/cart/ExperienceActivities";
 import { experiences, getExperienceBySlug } from "@/data/experiences";
+import { getActivitiesByExperience } from "@/data/activities";
 
 export async function generateStaticParams() {
   return experiences.map((e) => ({ slug: e.slug }));
@@ -31,9 +33,10 @@ export default async function ExperiencePage({
   const exp = getExperienceBySlug(slug);
   if (!exp) notFound();
 
+  const activities = getActivitiesByExperience(slug);
+
   return (
     <>
-      {/* Hero — dark overlay, text stays white */}
       <section className="relative h-[65vh] min-h-[450px] flex items-end pb-20 overflow-hidden">
         <Image
           src={exp.image}
@@ -63,16 +66,9 @@ export default async function ExperiencePage({
               className="text-[var(--fg)] text-2xl mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              What&apos;s included
+              Choose activities
             </h3>
-            <ul className="space-y-3">
-              {exp.highlights.map((h) => (
-                <li key={h} className="flex items-center gap-3 text-[var(--fg-70)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] flex-shrink-0" />
-                  {h}
-                </li>
-              ))}
-            </ul>
+            <ExperienceActivities activities={activities} />
           </ScrollReveal>
 
           <ScrollReveal direction="right" delay={0.1}>
@@ -81,17 +77,23 @@ export default async function ExperiencePage({
                 className="text-[var(--fg)] text-2xl mb-6"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Add this to your journey
+                Build your journey
               </h3>
               <p className="text-[var(--fg-60)] mb-8 text-sm leading-relaxed">
-                This experience can be woven into any Caracal Safaris journey. Tell us what
-                excites you and we will craft the perfect itinerary around it.
+                Add the activities you want to your cart, then check out. We&apos;ll confirm
+                availability and payment arrangements within 24 hours.
               </p>
               <Link
-                href={`/plan-your-journey`}
+                href="/cart"
                 className="block text-center bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3.5 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors mb-4"
               >
-                Plan Your Journey
+                View cart
+              </Link>
+              <Link
+                href="/plan-your-journey"
+                className="block text-center border border-[var(--fg-20)] text-[var(--fg)] px-6 py-3.5 rounded text-sm hover:border-[var(--accent)] transition-colors mb-4"
+              >
+                Or plan a custom journey
               </Link>
               <Link
                 href="/experiences"

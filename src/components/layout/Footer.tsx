@@ -6,7 +6,8 @@ const destinations = ["Victoria Falls", "Livingstone", "Chobe", "Hwange National
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--bg-alt)] text-[var(--fg-70)] border-t border-[var(--fg-10)] transition-colors duration-400">
+    <footer className="brand-surface bg-[var(--bg-alt)] text-[var(--fg-70)] border-t border-[var(--fg-10)] transition-colors duration-400">
+      <div className="brand-surface__glow" aria-hidden />
       <div className="container-luxury py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}

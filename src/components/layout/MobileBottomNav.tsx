@@ -2,17 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useCart } from "@/contexts/CartContext";
 
 const tabs = [
   { label: "Home", href: "/", icon: "pi-home" },
   { label: "Trips", href: "/destinations", icon: "pi-map-marker" },
   { label: "Plan", href: "/plan-your-journey", icon: "pi-compass", primary: true },
   { label: "Experiences", href: "/experiences", icon: "pi-camera" },
-  { label: "Contact", href: "/contact", icon: "pi-envelope" },
+  { label: "Cart", href: "/cart", icon: "pi-shopping-cart" },
 ] as const;
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
+  const { itemCount } = useCart();
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -25,7 +27,6 @@ export default function MobileBottomNav() {
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
       aria-label="Mobile primary navigation"
     >
-      {/* Tribal-inspired accent strip from logo */}
       <div
         className="h-0.5 w-full"
         style={{
@@ -38,6 +39,7 @@ export default function MobileBottomNav() {
         {tabs.map((tab) => {
           const active = isActive(tab.href);
           const primary = "primary" in tab && tab.primary;
+          const showBadge = tab.href === "/cart" && itemCount > 0;
 
           return (
             <li key={tab.href} className="flex">
@@ -52,11 +54,16 @@ export default function MobileBottomNav() {
                 <span
                   className={
                     primary
-                      ? "flex w-11 h-11 -mt-5 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-fg)] shadow-lg shadow-black/25"
-                      : "flex items-center justify-center"
+                      ? "relative flex w-11 h-11 -mt-5 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-fg)] shadow-lg shadow-black/25"
+                      : "relative flex items-center justify-center"
                   }
                 >
                   <i className={`pi ${tab.icon}`} style={{ fontSize: "18px" }} aria-hidden />
+                  {showBadge && (
+                    <span className="absolute -top-2 -right-3 min-w-[16px] h-4 px-1 rounded-full bg-[var(--accent)] text-[var(--accent-fg)] text-[9px] font-bold flex items-center justify-center">
+                      {itemCount > 99 ? "99+" : itemCount}
+                    </span>
+                  )}
                 </span>
                 <span
                   className={`text-[9px] tracking-wide uppercase leading-none ${

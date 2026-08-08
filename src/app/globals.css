@@ -140,6 +140,54 @@ body {
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
+/* ── Brand glow (header / footer) ───────────────────────────────── */
+@keyframes savanna-glow {
+  0%, 100% {
+    background-position: 0% 50%;
+    opacity: 0.55;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.9;
+  }
+}
+
+@keyframes savanna-drift {
+  0%, 100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  50% { transform: translate3d(8%, 6%, 0) scale(1.12); }
+}
+
+.brand-surface {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.brand-surface__glow {
+  pointer-events: none;
+  position: absolute;
+  inset: -40%;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 30%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 60%),
+    radial-gradient(ellipse 45% 50% at 80% 70%, color-mix(in srgb, var(--savanna) 22%, transparent), transparent 55%),
+    linear-gradient(120deg, transparent 20%, color-mix(in srgb, var(--accent) 12%, transparent) 50%, transparent 80%);
+  background-size: 200% 200%;
+  animation: savanna-glow 14s ease-in-out infinite, savanna-drift 22s ease-in-out infinite;
+}
+
+.brand-surface > *:not(.brand-surface__glow) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-surface__glow {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
 /* ── Selection ──────────────────────────────────────────────────── */
 ::selection {
   background-color: var(--color-gold);

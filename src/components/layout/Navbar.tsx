@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavbarScroll } from "@/hooks/useNavbarScroll";
 import { useSiteTheme } from "@/contexts/NavbarThemeContext";
 import { siteConfig } from "@/data/siteConfig";
+import CartButton from "@/components/cart/CartButton";
 
 const leftLinks = [
   { label: "Home", href: "/" },
@@ -118,10 +119,11 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`brand-surface fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled || menuOpen ? t.scrolledBg : "bg-transparent"
         }`}
       >
+        <div className="brand-surface__glow" aria-hidden />
         <nav className="container-luxury flex items-center h-20">
 
           {/* Left links */}
@@ -161,8 +163,9 @@ export default function Navbar() {
               />
             ))}
 
-            {/* Divider + toggle */}
-            <div className="ml-auto flex items-center gap-3 pl-6 border-l border-[var(--fg-10)]">
+            {/* Divider + cart + toggle */}
+            <div className="ml-auto flex items-center gap-2 pl-6 border-l border-[var(--fg-10)]">
+              <CartButton />
               <button
                 onClick={toggleTheme}
                 aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
@@ -176,8 +179,9 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile: theme toggle + hamburger (bottom nav covers primary routes) */}
+          {/* Mobile: cart + theme toggle + hamburger */}
           <div className="flex lg:hidden flex-1 items-center justify-end gap-1">
+            <CartButton />
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}

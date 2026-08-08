@@ -8,6 +8,8 @@ import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import LenisProvider from "@/components/layout/LenisProvider";
 import { NavbarThemeProvider } from "@/contexts/NavbarThemeContext";
+import { CartProvider } from "@/contexts/CartContext";
+import CartDrawer from "@/components/cart/CartDrawer";
 import { siteConfig } from "@/data/siteConfig";
 
 const playfair = Playfair_Display({
@@ -75,13 +77,16 @@ export default function RootLayout({
       </head>
       <body>
         <NavbarThemeProvider>
-          <LenisProvider>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-            <MobileBottomNav />
-            <WhatsAppButton />
-          </LenisProvider>
+          <CartProvider>
+            <LenisProvider>
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+              <MobileBottomNav />
+              <WhatsAppButton />
+              <CartDrawer />
+            </LenisProvider>
+          </CartProvider>
         </NavbarThemeProvider>
       </body>
     </html>

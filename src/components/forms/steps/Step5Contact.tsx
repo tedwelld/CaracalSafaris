@@ -122,7 +122,7 @@ export default function Step5Contact({ data, update, isSubmitting }: Props) {
         <button
           type="submit"
           disabled={isSubmitting || !data.fullName || !data.email || !data.termsAccepted}
-          className="w-full bg-[var(--accent)] text-[#1a1a1a] py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300"
+          className="w-full bg-[var(--accent)] text-[var(--accent-fg)] py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300"
         >
           {isSubmitting ? "Sending your enquiry..." : "Plan My Journey →"}
         </button>

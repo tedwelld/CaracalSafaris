@@ -10,9 +10,9 @@ export default function FormProgress({ current }: { current: number }) {
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-300 ${
                   i < current
-                    ? "bg-[var(--accent)] text-[#1a1a1a]"
+                    ? "bg-[var(--accent)] text-[var(--accent-fg)]"
                     : i === current
-                    ? "bg-[var(--accent)] text-[#1a1a1a] ring-4 ring-[var(--accent)]/20"
+                    ? "bg-[var(--accent)] text-[var(--accent-fg)] ring-4 ring-[var(--accent)]/20"
                     : "bg-[var(--fg-10)] text-[var(--fg-30)]"
                 }`}
               >

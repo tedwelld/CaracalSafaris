@@ -4,6 +4,7 @@ import "./globals.css";
 import "primeicons/primeicons.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileBottomNav from "@/components/layout/MobileBottomNav";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import LenisProvider from "@/components/layout/LenisProvider";
 import { NavbarThemeProvider } from "@/contexts/NavbarThemeContext";
@@ -78,6 +79,7 @@ export default function RootLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <MobileBottomNav />
             <WhatsAppButton />
           </LenisProvider>
         </NavbarThemeProvider>

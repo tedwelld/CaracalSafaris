@@ -14,11 +14,11 @@ interface ButtonProps {
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-[#c4b49a] text-[#1a1a1a] hover:bg-[#d4c4aa] font-semibold",
+    "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--accent-hover)] font-semibold",
   ghost:
-    "bg-transparent text-[#f5f0e8] border border-[#f5f0e8]/40 hover:border-[#f5f0e8] hover:bg-[#f5f0e8]/5",
+    "bg-transparent text-[var(--fg)] border border-[var(--fg-40)] hover:border-[var(--fg)] hover:bg-[var(--fg-05)]",
   outline:
-    "bg-transparent text-[#c4b49a] border border-[#c4b49a]/60 hover:border-[#c4b49a] hover:bg-[#c4b49a]/10",
+    "bg-transparent text-[var(--accent)] border border-[var(--accent)]/60 hover:border-[var(--accent)] hover:bg-[var(--accent)]/10",
 };
 
 export default function Button({

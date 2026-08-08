@@ -41,7 +41,7 @@ const TripAdvisorBadge = () => (
     {/* Year + Label */}
     <div className="text-center">
       <p
-        className="text-[#c4b49a] text-4xl font-bold leading-none"
+        className="text-[var(--accent)] text-4xl font-bold leading-none"
         style={{ fontFamily: "var(--font-display)" }}
       >
         2024
@@ -58,7 +58,7 @@ export default function TrustBadgesSection() {
     <SectionWrapper background="dark" className="py-20 border-t border-[var(--fg-05)]">
       <ScrollReveal>
         <div className="text-center mb-14">
-          <p className="text-[#c4b49a] text-xs tracking-widest uppercase mb-3">
+          <p className="text-[var(--accent)] text-xs tracking-widest uppercase mb-3">
             Recognition
           </p>
           <h2

@@ -42,17 +42,17 @@ export default function CinematicCard({
       <div className="absolute inset-0 flex flex-col justify-end p-8">
         <SectionLabel>{category}</SectionLabel>
         <h3
-          className="text-[#f5f0e8] text-3xl mb-3 leading-tight"
+          className="text-white text-3xl mb-3 leading-tight"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {title}
         </h3>
-        <p className="text-[#f5f0e8]/70 text-sm leading-relaxed mb-5 max-w-xs">
+        <p className="text-white/70 text-sm leading-relaxed mb-5 max-w-xs">
           {description}
         </p>
         <Link
           href={href}
-          className="text-[#c4b49a] text-sm tracking-wide hover:text-[#d4c4aa] transition-colors inline-flex items-center gap-2"
+          className="text-[var(--accent)] text-sm tracking-wide hover:text-[var(--accent-hover)] transition-colors inline-flex items-center gap-2"
         >
           Explore →
         </Link>

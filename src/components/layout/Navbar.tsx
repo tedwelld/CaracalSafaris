@@ -37,7 +37,6 @@ interface TokenSet {
   textHover: string;
   textActive: string;
   underline: string;
-  logoLabel: string;
   hamburgerBar: string;
   mobileBg: string;
   mobileText: string;
@@ -50,34 +49,32 @@ interface TokenSet {
 
 const tokens: Record<string, TokenSet> = {
   dark: {
-    scrolledBg:   "bg-[#1a1a1a]/95 backdrop-blur-sm shadow-lg",
+    scrolledBg:   "bg-[var(--bg)]/95 backdrop-blur-sm shadow-lg",
     textDefault:  "text-[var(--fg-60)]",
     textHover:    "hover:text-[var(--fg)]",
     textActive:   "text-[var(--accent)]",
     underline:    "bg-[var(--accent)]",
-    logoLabel:    "text-[var(--fg)]",
     hamburgerBar: "bg-[var(--fg)]",
     mobileBg:     "bg-[var(--bg)]",
     mobileText:   "text-[var(--fg)]",
     mobileActive: "text-[var(--accent)]",
     mobileHover:  "hover:text-[var(--accent)]",
-    mobileCta:    "bg-[var(--accent)] text-[#1a1a1a] hover:bg-[var(--accent-hover)]",
+    mobileCta:    "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--accent-hover)]",
     mobileWa:     "text-[var(--fg-50)] hover:text-[var(--accent)]",
     toggleIcon:   "text-[var(--fg-60)] hover:text-[var(--fg)]",
   },
   light: {
-    scrolledBg:   "bg-white/95 backdrop-blur-sm shadow-sm",
+    scrolledBg:   "bg-[var(--bg)]/95 backdrop-blur-sm shadow-sm",
     textDefault:  "text-[var(--fg-50)]",
     textHover:    "hover:text-[var(--fg)]",
-    textActive:   "text-[var(--fg)]",
-    underline:    "bg-[var(--fg)]",
-    logoLabel:    "text-[var(--fg)]",
+    textActive:   "text-[var(--accent)]",
+    underline:    "bg-[var(--accent)]",
     hamburgerBar: "bg-[var(--fg)]",
     mobileBg:     "bg-[var(--bg)]",
     mobileText:   "text-[var(--fg)]",
-    mobileActive: "text-[var(--fg)] font-semibold",
-    mobileHover:  "hover:text-[var(--fg)]",
-    mobileCta:    "bg-[var(--fg)] text-[var(--bg)] hover:opacity-80",
+    mobileActive: "text-[var(--accent)] font-semibold",
+    mobileHover:  "hover:text-[var(--accent)]",
+    mobileCta:    "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--accent-hover)]",
     mobileWa:     "text-[var(--fg-40)] hover:text-[var(--fg)]",
     toggleIcon:   "text-[var(--fg-50)] hover:text-[var(--fg)]",
   },
@@ -140,22 +137,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Centered logo */}
-          <Link href="/" className="flex flex-col items-center gap-1 flex-shrink-0 group">
+          {/* Centered logo — full lockup includes brand name */}
+          <Link href="/" className="flex items-center justify-center flex-shrink-0 group">
             <Image
               src={siteConfig.logo}
               alt={siteConfig.name}
-              width={72}
+              width={200}
               height={72}
-              className="h-12 w-12 object-contain transition-transform duration-500 group-hover:scale-105"
+              className="h-12 w-auto max-w-[160px] sm:max-w-[180px] object-contain transition-transform duration-500 group-hover:scale-105"
               priority
             />
-            <span
-              className={`text-[10px] leading-tight tracking-[0.2em] uppercase hidden lg:block text-center transition-colors duration-300 ${t.logoLabel}`}
-              style={{ fontFamily: "var(--font-body)" }}
-            >
-              {siteConfig.name}
-            </span>
           </Link>
 
           {/* Right links + theme toggle */}
@@ -185,39 +176,28 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile: brand + toggle + hamburger */}
-          <div className="flex lg:hidden flex-1 items-center justify-between">
-            <span
-              className={`text-sm leading-tight transition-colors duration-300 ${t.logoLabel}`}
-              style={{ fontFamily: "var(--font-display)" }}
+          {/* Mobile: theme toggle + hamburger (bottom nav covers primary routes) */}
+          <div className="flex lg:hidden flex-1 items-center justify-end gap-1">
+            <button
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[var(--fg-10)] ${t.toggleIcon}`}
             >
-              {siteConfig.name}
-              <span className="block text-[var(--accent)] text-[9px] tracking-widest uppercase">
-                Private Safari Journeys
-              </span>
-            </span>
-
-            <div className="flex items-center gap-1">
-              <button
-                onClick={toggleTheme}
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[var(--fg-10)] ${t.toggleIcon}`}
-              >
-                <i
-                  className={`pi ${theme === "dark" ? "pi-sun" : "pi-moon"}`}
-                  style={{ fontSize: "14px" }}
-                />
-              </button>
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="flex flex-col gap-1.5 p-2"
-                aria-label="Toggle menu"
-              >
-                <span className={`block w-6 h-0.5 ${t.hamburgerBar} transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-                <span className={`block w-6 h-0.5 ${t.hamburgerBar} transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-                <span className={`block w-6 h-0.5 ${t.hamburgerBar} transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-              </button>
-            </div>
+              <i
+                className={`pi ${theme === "dark" ? "pi-sun" : "pi-moon"}`}
+                style={{ fontSize: "14px" }}
+              />
+            </button>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex flex-col gap-1.5 p-2"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              <span className={`block w-6 h-0.5 ${t.hamburgerBar} transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-6 h-0.5 ${t.hamburgerBar} transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-6 h-0.5 ${t.hamburgerBar} transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
           </div>
         </nav>
       </header>
@@ -230,7 +210,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className={`fixed inset-0 z-40 ${t.mobileBg} flex flex-col justify-center items-center gap-8 lg:hidden transition-colors duration-400`}
+            className={`fixed inset-0 z-40 ${t.mobileBg} flex flex-col justify-center items-center gap-8 lg:hidden transition-colors duration-400 pb-24`}
           >
             {allLinks.map((link, i) => (
               <motion.div

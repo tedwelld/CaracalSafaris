@@ -54,7 +54,7 @@ export default function Step1TripType({ data, update }: Props) {
 
               {selected && (
                 <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-[var(--accent)] flex items-center justify-center">
-                  <i className="pi pi-check" style={{ color: "#1a1a1a", fontSize: "12px" }} />
+                  <i className="pi pi-check" style={{ color: "var(--accent-fg)", fontSize: "12px" }} />
                 </div>
               )}
 

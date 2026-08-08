@@ -55,14 +55,14 @@ export default function ExperiencesShowcaseSection() {
               <ul className="space-y-2 mb-8">
                 {exp.highlights.slice(0, 4).map((h) => (
                   <li key={h} className="flex items-center gap-3 text-[var(--fg)]/60 text-sm">
-                    <span className="w-1 h-1 rounded-full bg-[#c4b49a] flex-shrink-0" />
+                    <span className="w-1 h-1 rounded-full bg-[var(--accent)] flex-shrink-0" />
                     {h}
                   </li>
                 ))}
               </ul>
               <Link
                 href={`/experiences/${exp.slug}`}
-                className="text-[#c4b49a] text-sm tracking-wide hover:text-[#d4c4aa] transition-colors"
+                className="text-[var(--accent)] text-sm tracking-wide hover:text-[var(--accent-hover)] transition-colors"
               >
                 Explore {exp.label} experiences →
               </Link>

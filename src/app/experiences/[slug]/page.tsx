@@ -89,7 +89,7 @@ export default async function ExperiencePage({
               </p>
               <Link
                 href={`/plan-your-journey`}
-                className="block text-center bg-[var(--accent)] text-[#1a1a1a] px-6 py-3.5 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors mb-4"
+                className="block text-center bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3.5 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors mb-4"
               >
                 Plan Your Journey
               </Link>

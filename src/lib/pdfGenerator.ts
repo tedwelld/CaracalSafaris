@@ -22,13 +22,13 @@ export interface EnquiryData {
 }
 
 /* ── Brand colours ─────────────────────────────────────────────── */
-const DARK    = "#1a1a1a";
-const IVORY   = "#f5f0e8";
-const GOLD    = "#c4b49a";
+const DARK    = "#1f140e";
+const IVORY   = "#fbf4e8";
+const GOLD    = "#f06522";
 const WHITE   = "#ffffff";
 const GREY    = "#6b6b6b";
-const STRIPE  = "#f9f6f1";
-const BORDER  = "#e8e0d4";
+const STRIPE  = "#fffbf5";
+const BORDER  = "#f0e6d6";
 
 /* ── Layout constants ───────────────────────────────────────────── */
 const PAGE_W  = 595.28;   // A4 width in points

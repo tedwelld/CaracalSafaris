@@ -33,21 +33,21 @@ function emailShell(title: string, body: string) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title}</title>
 </head>
-<body style="margin:0;padding:0;background:#f5f0e8;font-family:Georgia,serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f0e8;padding:40px 0;">
+<body style="margin:0;padding:0;background:#fbf4e8;font-family:Georgia,serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#fbf4e8;padding:40px 0;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
         <!-- Header -->
         <tr>
-          <td style="background:#1a1a1a;padding:32px 40px;text-align:center;">
-            <p style="margin:0;color:#c4b49a;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-family:Arial,sans-serif;">
+          <td style="background:#1f140e;padding:32px 40px;text-align:center;">
+            <p style="margin:0;color:#f06522;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-family:Arial,sans-serif;">
               Zimbabwe · Zambia · Botswana
             </p>
-            <h1 style="margin:8px 0 0;color:#f5f0e8;font-size:26px;font-weight:normal;font-family:Georgia,serif;">
+            <h1 style="margin:8px 0 0;color:#fbf4e8;font-size:26px;font-weight:normal;font-family:Georgia,serif;">
               Caracal Safaris
             </h1>
-            <p style="margin:6px 0 0;color:#c4b49a;font-size:12px;font-style:italic;font-family:Georgia,serif;">
+            <p style="margin:6px 0 0;color:#f06522;font-size:12px;font-style:italic;font-family:Georgia,serif;">
               The Smoke That Thunders
             </p>
           </td>
@@ -62,12 +62,12 @@ function emailShell(title: string, body: string) {
 
         <!-- Footer -->
         <tr>
-          <td style="background:#1a1a1a;padding:24px 40px;text-align:center;">
-            <p style="margin:0;color:#f5f0e8;font-size:11px;font-family:Arial,sans-serif;opacity:0.5;">
+          <td style="background:#1f140e;padding:24px 40px;text-align:center;">
+            <p style="margin:0;color:#fbf4e8;font-size:11px;font-family:Arial,sans-serif;opacity:0.5;">
               Caracal Safaris · Victoria Falls, Zimbabwe
             </p>
             <p style="margin:8px 0 0;font-size:11px;font-family:Arial,sans-serif;">
-              <a href="${REF_LINK}" style="color:#c4b49a;text-decoration:none;">caracalsafaris.com</a>
+              <a href="${REF_LINK}" style="color:#f06522;text-decoration:none;">caracalsafaris.com</a>
             </p>
           </td>
         </tr>
@@ -104,15 +104,15 @@ function summaryBlock(data: EnquiryData) {
       ([label, value], i) => `
       <tr style="background:${i % 2 === 0 ? "#ffffff" : "#f9f6f1"};">
         <td style="padding:10px 16px;color:#6b6b6b;font-size:13px;font-family:Arial,sans-serif;width:40%;vertical-align:top;border-bottom:1px solid #e8e0d4;">${label}</td>
-        <td style="padding:10px 16px;color:#1a1a1a;font-size:13px;font-family:Arial,sans-serif;font-weight:bold;border-bottom:1px solid #e8e0d4;">${value}</td>
+        <td style="padding:10px 16px;color:#1f140e;font-size:13px;font-family:Arial,sans-serif;font-weight:bold;border-bottom:1px solid #e8e0d4;">${value}</td>
       </tr>`
     )
     .join("");
 
   return `
     <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8e0d4;border-radius:4px;overflow:hidden;margin-top:8px;">
-      <tr style="background:#1a1a1a;">
-        <td colspan="2" style="padding:10px 16px;color:#c4b49a;font-size:11px;font-family:Arial,sans-serif;letter-spacing:0.15em;text-transform:uppercase;font-weight:bold;">Journey Details</td>
+      <tr style="background:#1f140e;">
+        <td colspan="2" style="padding:10px 16px;color:#f06522;font-size:11px;font-family:Arial,sans-serif;letter-spacing:0.15em;text-transform:uppercase;font-weight:bold;">Journey Details</td>
       </tr>
       ${rowsHtml}
     </table>`;
@@ -123,19 +123,19 @@ function adminEmailHtml(data: EnquiryData, ref: string) {
   return emailShell(
     `New Enquiry — ${data.fullName}`,
     `
-    <h2 style="margin:0 0 4px;font-size:22px;color:#1a1a1a;font-weight:normal;">New Journey Enquiry</h2>
-    <p style="margin:0 0 4px;color:#c4b49a;font-size:13px;font-family:Arial,sans-serif;letter-spacing:0.1em;text-transform:uppercase;">
+    <h2 style="margin:0 0 4px;font-size:22px;color:#1f140e;font-weight:normal;">New Journey Enquiry</h2>
+    <p style="margin:0 0 4px;color:#f06522;font-size:13px;font-family:Arial,sans-serif;letter-spacing:0.1em;text-transform:uppercase;">
       Submitted via caracalsafaris.com
     </p>
     <p style="margin:0 0 24px;color:#aaaaaa;font-size:12px;font-family:Arial,sans-serif;">Ref: ${ref}</p>
 
     <!-- Contact info -->
-    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f0e8;border-radius:4px;padding:20px;margin-bottom:24px;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#fbf4e8;border-radius:4px;padding:20px;margin-bottom:24px;">
       <tr>
         <td>
-          <p style="margin:0 0 6px;font-size:20px;color:#1a1a1a;">${data.fullName}</p>
+          <p style="margin:0 0 6px;font-size:20px;color:#1f140e;">${data.fullName}</p>
           <p style="margin:0 0 4px;font-size:13px;font-family:Arial,sans-serif;color:#6b6b6b;">
-            <a href="mailto:${data.email}" style="color:#1a1a1a;text-decoration:none;">${data.email}</a>
+            <a href="mailto:${data.email}" style="color:#1f140e;text-decoration:none;">${data.email}</a>
           </p>
           ${data.phone   ? `<p style="margin:0 0 4px;font-size:13px;font-family:Arial,sans-serif;color:#6b6b6b;">${data.phone}</p>` : ""}
           ${data.country ? `<p style="margin:0;font-size:13px;font-family:Arial,sans-serif;color:#6b6b6b;">${data.country}</p>` : ""}
@@ -143,7 +143,7 @@ function adminEmailHtml(data: EnquiryData, ref: string) {
         </td>
         <td align="right" style="vertical-align:top;">
           <a href="mailto:${data.email}?subject=Re: Your Caracal Safaris Journey Enquiry (${ref})"
-             style="display:inline-block;background:#c4b49a;color:#1a1a1a;padding:10px 20px;border-radius:4px;font-size:13px;font-family:Arial,sans-serif;font-weight:bold;text-decoration:none;">
+             style="display:inline-block;background:#f06522;color:#1f140e;padding:10px 20px;border-radius:4px;font-size:13px;font-family:Arial,sans-serif;font-weight:bold;text-decoration:none;">
             Reply to Enquiry
           </a>
         </td>
@@ -165,7 +165,7 @@ function clientEmailHtml(data: EnquiryData, ref: string) {
   return emailShell(
     "Your Caracal Safaris Journey Enquiry",
     `
-    <h2 style="margin:0 0 16px;font-size:26px;color:#1a1a1a;font-weight:normal;">
+    <h2 style="margin:0 0 16px;font-size:26px;color:#1f140e;font-weight:normal;">
       Thank you, ${firstName}.
     </h2>
     <p style="margin:0 0 8px;font-size:16px;color:#3a3a3a;line-height:1.7;font-style:italic;">
@@ -174,10 +174,10 @@ function clientEmailHtml(data: EnquiryData, ref: string) {
     <p style="margin:0 0 8px;font-size:13px;color:#6b6b6b;font-family:Arial,sans-serif;">
       We&rsquo;ve received your journey enquiry and will be in touch within 24 hours.
       For an immediate response, reach us on
-      <a href="https://wa.me/263789276807" style="color:#c4b49a;text-decoration:none;">WhatsApp</a>.
+      <a href="https://wa.me/263789276807" style="color:#f06522;text-decoration:none;">WhatsApp</a>.
     </p>
     <p style="margin:0 0 28px;font-size:12px;color:#aaaaaa;font-family:Arial,sans-serif;">
-      Your reference: <strong style="color:#1a1a1a;">${ref}</strong>
+      Your reference: <strong style="color:#1f140e;">${ref}</strong>
     </p>
 
     <hr style="border:none;border-top:1px solid #e8e0d4;margin:0 0 28px;" />

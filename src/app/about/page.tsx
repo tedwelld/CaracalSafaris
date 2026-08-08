@@ -147,7 +147,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/plan-your-journey"
-              className="inline-block bg-[var(--accent)] text-[#1a1a1a] px-10 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
+              className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-10 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
             >
               Plan Your Journey
             </Link>

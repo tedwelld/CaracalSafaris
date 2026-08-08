@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
-/* ── Design Tokens ──────────────────────────────────────────────── */
+/* ── Design Tokens (from Caracal logo) ───────────────────────────── */
 @theme inline {
-  /* Colors */
-  --color-charcoal:       #1a1a1a;
-  --color-charcoal-800:   #2a2a2a;
-  --color-charcoal-600:   #3a3a3a;
-  --color-ivory:          #f5f0e8;
-  --color-ivory-100:      #faf8f4;
-  --color-ivory-200:      #ede6d8;
-  --color-gold:           #c4b49a;
-  --color-gold-light:     #d4c4aa;
-  --color-gold-dark:      #a8987e;
-  --color-amber:          #e8853d;
-  --color-amber-dark:     #c96e2a;
-  --color-river:          #2d5f7f;
-  --color-river-light:    #3d7a9f;
-  --color-bronze:         #8b5e3c;
-  --color-bronze-light:   #a67550;
+  /* Colors — earth tones from the brand lockup */
+  --color-charcoal:       #1f140e;
+  --color-charcoal-800:   #2c1b12;
+  --color-charcoal-600:   #3d2b1f;
+  --color-ivory:          #fbf4e8;
+  --color-ivory-100:      #fffbf5;
+  --color-ivory-200:      #f0e6d6;
+  --color-gold:           #f06522;
+  --color-gold-light:     #ff7a3d;
+  --color-gold-dark:      #c44e12;
+  --color-amber:          #ffb020;
+  --color-amber-dark:     #e89a00;
+  --color-river:          #2d4a5f;
+  --color-river-light:    #3d6480;
+  --color-bronze:         #8b4513;
+  --color-bronze-light:   #a65d2e;
 
   /* Typography */
   --font-display:   var(--font-playfair), Georgia, serif;
@@ -30,11 +30,11 @@
   --transition-luxury: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast:   0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Semantic theme tokens — dark (default) */
-  --bg:        #1a1a1a;
-  --bg-alt:    #111111;
-  --bg-surface:#2a2a2a;
-  --fg:        #f5f0e8;
+  /* Semantic theme tokens — dark (default) espresso brown */
+  --bg:        #1f140e;
+  --bg-alt:    #140e0a;
+  --bg-surface:#2c1b12;
+  --fg:        #fbf4e8;
 
   /* Derived opacity variants — auto-cascade when --fg changes */
   --fg-80: color-mix(in srgb, var(--fg) 80%, transparent);
@@ -50,18 +50,20 @@
   --fg-10: color-mix(in srgb, var(--fg) 10%, transparent);
   --fg-05: color-mix(in srgb, var(--fg) 5%, transparent);
 
-  /* Accent — consistent across both themes */
-  --accent:       #c4b49a;
-  --accent-hover: #d4c4aa;
-  --accent-dark:  #a8987e;
+  /* Accent — caracal orange from logo */
+  --accent:       #f06522;
+  --accent-hover: #ff7a3d;
+  --accent-dark:  #c44e12;
+  --accent-fg:    #1f140e;
+  --savanna:      #ffb020;
 }
 
 /* Light theme overrides — only base values needed; opacity variants auto-derive */
 html.theme-light {
   --bg:        #ffffff;
-  --bg-alt:    #f5f0e8;
-  --bg-surface:#ede6d8;
-  --fg:        #1a1a1a;
+  --bg-alt:    #fbf4e8;
+  --bg-surface:#f0e6d6;
+  --fg:        #1f140e;
 }
 
 /* Disable native smooth scroll — Lenis handles it */
@@ -76,6 +78,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Space for fixed mobile bottom nav */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 /* ── Typography Utilities ───────────────────────────────────────── */
@@ -134,7 +143,7 @@ body {
 /* ── Selection ──────────────────────────────────────────────────── */
 ::selection {
   background-color: var(--color-gold);
-  color: var(--color-charcoal);
+  color: var(--color-ivory);
 }
 
 /* ── react-day-picker overrides ─────────────────────────────────── */

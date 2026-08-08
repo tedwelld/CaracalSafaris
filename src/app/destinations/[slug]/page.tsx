@@ -129,7 +129,7 @@ export default async function DestinationPage({
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Link
                 href={`/plan-your-journey?destination=${dest.slug}`}
-                className="bg-[var(--accent)] text-[#1a1a1a] px-8 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
+                className="bg-[var(--accent)] text-[var(--accent-fg)] px-8 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
               >
                 Plan This Journey
               </Link>

@@ -56,7 +56,7 @@ export default function DestinationsPreviewSection() {
           </h2>
           <Link
             href="/destinations"
-            className="text-[#c4b49a] text-sm tracking-wide hover:text-[#d4c4aa] transition-colors"
+            className="text-[var(--accent)] text-sm tracking-wide hover:text-[var(--accent-hover)] transition-colors"
           >
             View all destinations →
           </Link>
@@ -101,11 +101,11 @@ function DestCard({ d, large }: { d: typeof destinations[number]; large?: boolea
         variants={{ hover: { opacity: 0.15 } }}
         initial={{ opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="absolute inset-0 bg-[#c4b49a]"
+        className="absolute inset-0 bg-[var(--accent)]"
       />
 
       <div className="absolute inset-0 flex flex-col justify-end p-6">
-        <p className="text-[#c4b49a] text-xs tracking-widest uppercase mb-1">{d.country}</p>
+        <p className="text-[var(--accent)] text-xs tracking-widest uppercase mb-1">{d.country}</p>
         <h3 className="text-white text-2xl mb-3" style={{ fontFamily: "var(--font-display)" }}>
           {d.name}
         </h3>
@@ -116,7 +116,7 @@ function DestCard({ d, large }: { d: typeof destinations[number]; large?: boolea
         >
           <Link
             href={`/destinations/${d.slug}`}
-            className="text-[#c4b49a] text-sm hover:text-[#d4c4aa] transition-colors"
+            className="text-[var(--accent)] text-sm hover:text-[var(--accent-hover)] transition-colors"
           >
             Explore More →
           </Link>

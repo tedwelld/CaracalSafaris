@@ -77,7 +77,7 @@ export default function HeroSection() {
         >
           <Link
             href="/plan-your-journey"
-            className="bg-[var(--accent)] text-[#1a1a1a] px-8 py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] transition-colors duration-300 min-w-[200px] text-center"
+            className="bg-[var(--accent)] text-[var(--accent-fg)] px-8 py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] transition-colors duration-300 min-w-[200px] text-center"
           >
             Plan Your Journey
           </Link>

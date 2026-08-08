@@ -49,13 +49,13 @@ export default function HowItWorksSection() {
           <ScrollReveal key={step.number} delay={i * 0.15} direction="up">
             <div className="relative group">
               {/* Number */}
-              <div className="text-[#c4b49a]/20 text-8xl font-bold absolute -top-4 -left-2 select-none"
+              <div className="text-[var(--accent)]/20 text-8xl font-bold absolute -top-4 -left-2 select-none"
                 style={{ fontFamily: "var(--font-display)" }}>
                 {step.number}
               </div>
 
               {/* Icon */}
-              <div className="relative z-10 text-[#c4b49a] mb-6 mt-4">
+              <div className="relative z-10 text-[var(--accent)] mb-6 mt-4">
                 {step.icon}
               </div>
 

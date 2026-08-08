@@ -43,15 +43,15 @@ export default function Step2Destinations({ data, update }: Props) {
               type="button"
               onClick={() => toggle(d.value)}
               className={`relative overflow-hidden rounded-sm h-40 border-2 transition-all duration-300 ${
-                selected ? "border-[#c4b49a]" : "border-transparent"
+                selected ? "border-[var(--accent)]" : "border-transparent"
               }`}
             >
               <Image src={d.image} alt={d.label} fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-              <div className={`absolute inset-0 transition-all duration-300 ${selected ? "bg-[#c4b49a]/30" : "bg-black/50"}`} />
+              <div className={`absolute inset-0 transition-all duration-300 ${selected ? "bg-[var(--accent)]/30" : "bg-black/50"}`} />
 
               {selected && (
-                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-[#c4b49a] flex items-center justify-center">
-                  <i className="pi pi-check" style={{ color: "#1a1a1a", fontSize: "12px" }} />
+                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-[var(--accent)] flex items-center justify-center">
+                  <i className="pi pi-check" style={{ color: "var(--accent-fg)", fontSize: "12px" }} />
                 </div>
               )}
 
@@ -67,7 +67,7 @@ export default function Step2Destinations({ data, update }: Props) {
       </div>
 
       {data.destinations.length === 0 && (
-        <p className="text-[#e8853d] text-sm mt-4">Please select at least one destination.</p>
+        <p className="text-[var(--accent)] text-sm mt-4">Please select at least one destination.</p>
       )}
     </div>
   );

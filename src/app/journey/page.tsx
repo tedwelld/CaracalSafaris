@@ -151,7 +151,7 @@ export default function JourneyPage() {
                   href="/plan-your-journey"
                   className={`text-center py-3 px-6 rounded text-sm font-medium transition-colors duration-300 ${
                     pkg.featured
-                      ? "bg-[var(--accent)] text-[#1a1a1a] hover:bg-[var(--accent-hover)]"
+                      ? "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--accent-hover)]"
                       : "border border-[var(--fg-20)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   }`}
                 >
@@ -178,7 +178,7 @@ export default function JourneyPage() {
             </p>
             <Link
               href="/plan-your-journey"
-              className="inline-block bg-[var(--accent)] text-[#1a1a1a] px-10 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
+              className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-10 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
             >
               Plan Your Journey
             </Link>

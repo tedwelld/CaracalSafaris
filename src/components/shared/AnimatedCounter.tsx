@@ -33,12 +33,12 @@ export default function AnimatedCounter({ end, label, suffix = "", prefix = "" }
   return (
     <div ref={ref} className="text-center">
       <p
-        className="text-5xl md:text-6xl text-[#c4b49a] mb-2 leading-none"
+        className="text-5xl md:text-6xl text-[var(--accent)] mb-2 leading-none"
         style={{ fontFamily: "var(--font-display)" }}
       >
         {prefix}{value}{suffix}
       </p>
-      <p className="text-[#f5f0e8]/60 text-sm tracking-widest uppercase">
+      <p className="text-[var(--fg-60)] text-sm tracking-widest uppercase">
         {label}
       </p>
     </div>

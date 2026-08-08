@@ -99,8 +99,8 @@ export default function EnquiryForm() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center py-16"
       >
-        <div className="w-16 h-16 rounded-full bg-[#c4b49a]/20 flex items-center justify-center mx-auto mb-8">
-          <i className="pi pi-check-circle" style={{ color: "#c4b49a", fontSize: "32px" }} />
+        <div className="w-16 h-16 rounded-full bg-[var(--accent)]/20 flex items-center justify-center mx-auto mb-8">
+          <i className="pi pi-check-circle" style={{ color: "var(--accent)", fontSize: "32px" }} />
         </div>
         <h2
           className="text-[var(--fg)] text-4xl mb-4"
@@ -156,7 +156,7 @@ export default function EnquiryForm() {
       </div>
 
       {error && (
-        <p className="text-[#e8853d] text-sm mt-4">{error}</p>
+        <p className="text-[var(--accent)] text-sm mt-4">{error}</p>
       )}
 
       {/* Navigation (not shown on final step — it has its own submit) */}
@@ -174,7 +174,7 @@ export default function EnquiryForm() {
             type="button"
             onClick={next}
             disabled={!canProceed(step, data)}
-            className="bg-[var(--accent)] text-[#1a1a1a] px-8 py-3 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300"
+            className="bg-[var(--accent)] text-[var(--accent-fg)] px-8 py-3 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300"
           >
             Continue →
           </button>

@@ -11,22 +11,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="mb-6">
               <Image
                 src={siteConfig.logo}
                 alt={siteConfig.name}
-                width={80}
+                width={220}
                 height={80}
-                className="h-16 w-16 object-contain"
+                className="h-16 w-auto max-w-[200px] object-contain mb-3"
               />
-              <div>
-                <p className="text-[var(--fg)] text-xl" style={{ fontFamily: "var(--font-display)" }}>
-                  Caracal Safaris
-                </p>
-                <p className="text-[var(--accent)] text-xs tracking-widest uppercase mt-0.5">
-                  The Smoke That Thunders
-                </p>
-              </div>
+              <p className="text-[var(--accent)] text-xs tracking-widest uppercase">
+                The Smoke That Thunders
+              </p>
             </div>
             <p className="text-sm leading-relaxed max-w-sm mb-6">
               Private journeys through Zimbabwe, Zambia &amp; Botswana within the
@@ -96,7 +91,7 @@ export default function Footer() {
               <li className="pt-2">
                 <Link
                   href="/plan-your-journey"
-                  className="inline-block bg-[var(--accent)] text-[#1a1a1a] px-4 py-2 rounded text-xs font-semibold hover:bg-[var(--accent-hover)] transition-colors"
+                  className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-4 py-2 rounded text-xs font-semibold hover:bg-[var(--accent-hover)] transition-colors"
                 >
                   Plan Your Journey →
                 </Link>

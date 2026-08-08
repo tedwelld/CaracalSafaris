@@ -46,7 +46,7 @@ export default function PlanYourJourneyPage() {
             sizes="50vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg)] via-transparent to-transparent" />
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute bottom-16 right-12 max-w-xs text-right">
             <p

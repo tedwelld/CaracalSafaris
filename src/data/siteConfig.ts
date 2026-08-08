@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Caracal Safaris",
   tagline: "The Smoke That Thunders",
   url: "https://www.caracalsafaris.com",
-  logo: "/images/caracalsafaris.jpeg",
+  logo: "/images/caracal-logo.png",
   description:
     "Private journeys through Zimbabwe, Zambia & Botswana within the Victoria Falls Triangle.",
   email: "admin@caracalsafaris.com",

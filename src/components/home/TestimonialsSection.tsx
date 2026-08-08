@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
           {/* Stars */}
           <div className="flex justify-center gap-1.5 mb-8">
             {Array.from({ length: t.rating }).map((_, i) => (
-              <i key={i} className="pi pi-star-fill" style={{ color: "#c4b49a", fontSize: "18px" }} />
+              <i key={i} className="pi pi-star-fill" style={{ color: "var(--accent)", fontSize: "18px" }} />
             ))}
           </div>
 
@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
               className="text-center"
             >
               <p className="text-[var(--fg)] font-medium">{t.author}</p>
-              <p className="text-[#c4b49a] text-sm mt-1">
+              <p className="text-[var(--accent)] text-sm mt-1">
                 {t.country} · {t.journey}
               </p>
             </motion.div>

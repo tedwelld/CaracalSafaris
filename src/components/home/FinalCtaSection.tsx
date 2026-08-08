@@ -18,7 +18,7 @@ export default function FinalCtaSection() {
 
       <div className="relative z-10 container-luxury text-center">
         <ScrollReveal>
-          <p className="text-[#c4b49a] text-xs tracking-[0.3em] uppercase mb-6">
+          <p className="text-[var(--accent)] text-xs tracking-[0.3em] uppercase mb-6">
             Begin your journey
           </p>
           <h2
@@ -27,7 +27,7 @@ export default function FinalCtaSection() {
           >
             We will take
             <br />
-            <span className="text-[#c4b49a] italic" style={{ fontFamily: "var(--font-editorial)" }}>
+            <span className="text-[var(--accent)] italic" style={{ fontFamily: "var(--font-editorial)" }}>
               you there.
             </span>
           </h2>
@@ -41,7 +41,7 @@ export default function FinalCtaSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/plan-your-journey"
-              className="bg-[#c4b49a] text-[#1a1a1a] px-10 py-4 rounded text-sm font-semibold tracking-wide hover:bg-[#d4c4aa] transition-colors duration-300 min-w-[220px] text-center"
+              className="bg-[var(--accent)] text-[var(--accent-fg)] px-10 py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] transition-colors duration-300 min-w-[220px] text-center"
             >
               Plan Your Journey
             </Link>

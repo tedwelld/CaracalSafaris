@@ -1,0 +1,38 @@
+{
+  "name": "caracal-safaris",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "dev:wasm": "set NEXT_DISABLE_SWC_NATIVE=1&& next dev --webpack",
+    "build": "next build --webpack",
+    "build:wasm": "set NEXT_DISABLE_SWC_NATIVE=1&& next build --webpack",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "@types/pdfkit": "^0.17.6",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.15.0",
+    "next": "16.2.6",
+    "nodemailer": "^8.0.7",
+    "pdfkit": "^0.18.0",
+    "primeicons": "^7.0.0",
+    "react": "19.2.4",
+    "react-day-picker": "^10.0.1",
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

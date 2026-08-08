@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ──────────────────────────────────────────────── */
+@theme inline {
+  /* Colors */
+  --color-charcoal:       #1a1a1a;
+  --color-charcoal-800:   #2a2a2a;
+  --color-charcoal-600:   #3a3a3a;
+  --color-ivory:          #f5f0e8;
+  --color-ivory-100:      #faf8f4;
+  --color-ivory-200:      #ede6d8;
+  --color-gold:           #c4b49a;
+  --color-gold-light:     #d4c4aa;
+  --color-gold-dark:      #a8987e;
+  --color-amber:          #e8853d;
+  --color-amber-dark:     #c96e2a;
+  --color-river:          #2d5f7f;
+  --color-river-light:    #3d7a9f;
+  --color-bronze:         #8b5e3c;
+  --color-bronze-light:   #a67550;
+
+  /* Typography */
+  --font-display:   var(--font-playfair), Georgia, serif;
+  --font-editorial: var(--font-cormorant), Georgia, serif;
+  --font-body:      var(--font-inter), system-ui, sans-serif;
+}
+
+/* ── CSS Custom Properties ──────────────────────────────────────── */
+:root {
+  --transition-luxury: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast:   0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Semantic theme tokens — dark (default) */
+  --bg:        #1a1a1a;
+  --bg-alt:    #111111;
+  --bg-surface:#2a2a2a;
+  --fg:        #f5f0e8;
+
+  /* Derived opacity variants — auto-cascade when --fg changes */
+  --fg-80: color-mix(in srgb, var(--fg) 80%, transparent);
+  --fg-70: color-mix(in srgb, var(--fg) 70%, transparent);
+  --fg-60: color-mix(in srgb, var(--fg) 60%, transparent);
+  --fg-55: color-mix(in srgb, var(--fg) 55%, transparent);
+  --fg-50: color-mix(in srgb, var(--fg) 50%, transparent);
+  --fg-40: color-mix(in srgb, var(--fg) 40%, transparent);
+  --fg-30: color-mix(in srgb, var(--fg) 30%, transparent);
+  --fg-25: color-mix(in srgb, var(--fg) 25%, transparent);
+  --fg-20: color-mix(in srgb, var(--fg) 20%, transparent);
+  --fg-15: color-mix(in srgb, var(--fg) 15%, transparent);
+  --fg-10: color-mix(in srgb, var(--fg) 10%, transparent);
+  --fg-05: color-mix(in srgb, var(--fg) 5%, transparent);
+
+  /* Accent — consistent across both themes */
+  --accent:       #c4b49a;
+  --accent-hover: #d4c4aa;
+  --accent-dark:  #a8987e;
+}
+
+/* Light theme overrides — only base values needed; opacity variants auto-derive */
+html.theme-light {
+  --bg:        #ffffff;
+  --bg-alt:    #f5f0e8;
+  --bg-surface:#ede6d8;
+  --fg:        #1a1a1a;
+}
+
+/* Disable native smooth scroll — Lenis handles it */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ── Typography Utilities ───────────────────────────────────────── */
+.font-display   { font-family: var(--font-display); }
+.font-editorial { font-family: var(--font-editorial); }
+.font-body      { font-family: var(--font-body); }
+
+/* ── Section Layout ─────────────────────────────────────────────── */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+.container-luxury {
+  max-width: 88rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-luxury {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-luxury {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ── Scroll Animations ──────────────────────────────────────────── */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.5; }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* ── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+/* ── react-day-picker overrides ─────────────────────────────────── */
+.rdp-root {
+  --rdp-accent-color: var(--color-gold);
+  --rdp-accent-background-color: color-mix(in srgb, var(--color-gold) 20%, transparent);
+}

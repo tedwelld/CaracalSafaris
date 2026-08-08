@@ -71,7 +71,7 @@ export default function RootLayout({
         {/* Prevent flash of wrong theme on reload */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{if(localStorage.getItem('caracal-theme')==='light')document.documentElement.classList.add('theme-light');}catch(e){}})();`,
+            __html: `(function(){try{var h=new Date().getHours();if(h>=6&&h<18)document.documentElement.classList.add('theme-light');else document.documentElement.classList.remove('theme-light');}catch(e){}})();`,
           }}
         />
       </head>

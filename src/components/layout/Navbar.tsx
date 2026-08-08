@@ -45,7 +45,6 @@ interface TokenSet {
   mobileHover: string;
   mobileCta: string;
   mobileWa: string;
-  toggleIcon: string;
 }
 
 const tokens: Record<string, TokenSet> = {
@@ -62,7 +61,6 @@ const tokens: Record<string, TokenSet> = {
     mobileHover:  "hover:text-[var(--accent)]",
     mobileCta:    "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--accent-hover)]",
     mobileWa:     "text-[var(--fg-50)] hover:text-[var(--accent)]",
-    toggleIcon:   "text-[var(--fg-60)] hover:text-[var(--fg)]",
   },
   light: {
     scrolledBg:   "bg-[var(--bg)]/95 backdrop-blur-sm shadow-sm",
@@ -77,7 +75,6 @@ const tokens: Record<string, TokenSet> = {
     mobileHover:  "hover:text-[var(--accent)]",
     mobileCta:    "bg-[var(--accent)] text-[var(--accent-fg)] hover:bg-[var(--accent-hover)]",
     mobileWa:     "text-[var(--fg-40)] hover:text-[var(--fg)]",
-    toggleIcon:   "text-[var(--fg-50)] hover:text-[var(--fg)]",
   },
 };
 
@@ -113,7 +110,7 @@ export default function Navbar() {
   const isScrolled = useNavbarScroll();
   const [menuOpen, setMenuOpen] = useState(false);
   const isActive = useIsActive();
-  const { theme, toggleTheme } = useSiteTheme();
+  const { theme } = useSiteTheme();
   const t = tokens[theme];
 
   return (
@@ -151,7 +148,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Right links + theme toggle */}
+          {/* Right links + cart */}
           <div className="hidden lg:flex flex-1 items-center justify-start gap-10 pl-10">
             {rightLinks.map((link) => (
               <NavLink
@@ -163,35 +160,14 @@ export default function Navbar() {
               />
             ))}
 
-            {/* Divider + cart + toggle */}
             <div className="ml-auto flex items-center gap-2 pl-6 border-l border-[var(--fg-10)]">
               <CartButton />
-              <button
-                onClick={toggleTheme}
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[var(--fg-10)] ${t.toggleIcon}`}
-              >
-                <i
-                  className={`pi ${theme === "dark" ? "pi-sun" : "pi-moon"}`}
-                  style={{ fontSize: "15px" }}
-                />
-              </button>
             </div>
           </div>
 
-          {/* Mobile: cart + theme toggle + hamburger */}
+          {/* Mobile: cart + hamburger */}
           <div className="flex lg:hidden flex-1 items-center justify-end gap-1">
             <CartButton />
-            <button
-              onClick={toggleTheme}
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-[var(--fg-10)] ${t.toggleIcon}`}
-            >
-              <i
-                className={`pi ${theme === "dark" ? "pi-sun" : "pi-moon"}`}
-                style={{ fontSize: "14px" }}
-              />
-            </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="flex flex-col gap-1.5 p-2"

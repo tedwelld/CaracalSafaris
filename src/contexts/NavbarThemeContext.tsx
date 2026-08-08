@@ -1,42 +1,69 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 export type SiteTheme = "dark" | "light";
 export type NavbarTheme = SiteTheme;
 
+/** Light 06:00–17:59, dark 18:00–05:59 (local time) */
+export function themeFromLocalTime(date = new Date()): SiteTheme {
+  const hour = date.getHours();
+  return hour >= 6 && hour < 18 ? "light" : "dark";
+}
+
+function applyThemeClass(theme: SiteTheme) {
+  document.documentElement.classList.toggle("theme-light", theme === "light");
+}
+
 interface SiteThemeContextValue {
   theme: SiteTheme;
-  toggleTheme: () => void;
-  setTheme: (t: SiteTheme) => void;
 }
 
 const defaultValue: SiteThemeContextValue = {
   theme: "dark",
-  toggleTheme: () => {},
-  setTheme: () => {},
 };
 
 export const SiteThemeContext = createContext<SiteThemeContextValue>(defaultValue);
 export const NavbarThemeContext = SiteThemeContext;
 
 export function SiteThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<SiteTheme>(() => {
+  const [theme, setTheme] = useState<SiteTheme>(() => {
     if (typeof window === "undefined") return "dark";
-    const saved = localStorage.getItem("caracal-theme") as SiteTheme | null;
-    return saved === "light" ? "light" : "dark";
+    return themeFromLocalTime();
   });
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("theme-light", theme === "light");
-    localStorage.setItem("caracal-theme", theme);
-  }, [theme]);
+  const syncTheme = useCallback(() => {
+    const next = themeFromLocalTime();
+    setTheme(next);
+    applyThemeClass(next);
+  }, []);
 
-  const toggleTheme = () => setThemeState((t) => (t === "dark" ? "light" : "dark"));
-  const setTheme = (t: SiteTheme) => setThemeState(t);
+  useEffect(() => {
+    syncTheme();
+
+    const interval = window.setInterval(syncTheme, 60_000);
+
+    const now = new Date();
+    const nextBoundary = new Date(now);
+    if (now.getHours() < 6) {
+      nextBoundary.setHours(6, 0, 0, 0);
+    } else if (now.getHours() < 18) {
+      nextBoundary.setHours(18, 0, 0, 0);
+    } else {
+      nextBoundary.setDate(nextBoundary.getDate() + 1);
+      nextBoundary.setHours(6, 0, 0, 0);
+    }
+    const msUntilBoundary = Math.max(nextBoundary.getTime() - now.getTime(), 0);
+    const boundaryTimer = window.setTimeout(syncTheme, msUntilBoundary + 250);
+
+    return () => {
+      window.clearInterval(interval);
+      window.clearTimeout(boundaryTimer);
+    };
+  }, [syncTheme]);
 
   return (
-    <SiteThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <SiteThemeContext.Provider value={{ theme }}>
       {children}
     </SiteThemeContext.Provider>
   );
@@ -51,6 +78,6 @@ export function useSiteTheme() {
 }
 
 export function useNavbarTheme() {
-  const { theme, setTheme } = useContext(SiteThemeContext);
-  return { theme, setTheme };
+  const { theme } = useContext(SiteThemeContext);
+  return { theme };
 }

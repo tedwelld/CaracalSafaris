@@ -1,20 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
+import { Pi } from "@/components/Pi";
 
 export default function CartDrawer() {
-  const {
-    isOpen,
-    closeCart,
-    lines,
-    subtotal,
-    itemCount,
-    setQuantity,
-    removeItem,
-  } = useCart();
+  const { isOpen, closeCart, items, totalPrice, count, remove } = useCart();
 
   return (
     <AnimatePresence>
@@ -43,7 +35,7 @@ export default function CartDrawer() {
                 className="text-lg text-[var(--fg)]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                Your cart ({itemCount})
+                Your cart ({count})
               </h2>
               <button
                 type="button"
@@ -56,99 +48,68 @@ export default function CartDrawer() {
             </div>
 
             <div className="flex-1 overflow-y-auto px-5 py-4">
-              {lines.length === 0 ? (
+              {items.length === 0 ? (
                 <div className="text-center py-16">
                   <p className="text-[var(--fg-50)] mb-6">Your cart is empty.</p>
                   <Link
-                    href="/experiences"
+                    href="/#featured-tours"
                     onClick={closeCart}
                     className="text-[var(--accent)] text-sm hover:text-[var(--accent-hover)]"
                   >
-                    Browse experiences →
+                    Browse tours →
                   </Link>
                 </div>
               ) : (
-                <ul className="space-y-5">
-                  {lines.map((line) => (
-                    <li key={line.id} className="flex gap-3">
-                      <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-sm">
-                        <Image
-                          src={line.image}
-                          alt={line.name}
-                          fill
-                          className="object-cover"
-                          sizes="80px"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p
-                          className="text-[var(--fg)] text-sm truncate"
-                          style={{ fontFamily: "var(--font-display)" }}
-                        >
-                          {line.name}
+                <ul className="space-y-4">
+                  {items.map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex gap-3 rounded-xl border border-line bg-surface p-3"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={item.imageUrl ?? "/images/victoria-falls.jpeg"}
+                        alt=""
+                        className="h-16 w-20 rounded-lg object-cover shrink-0"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-medium text-foreground truncate">{item.title}</p>
+                        <p className="text-xs text-ink-soft">
+                          {item.date} · {item.startTime}
                         </p>
-                        <p className="text-[var(--fg-40)] text-xs mt-0.5">
-                          {line.duration} · ${line.priceUsd}
+                        <p className="mt-1 text-sm font-semibold text-gold-dark">
+                          {item.totalPrice} {item.currency}
                         </p>
-                        <div className="mt-2 flex items-center gap-2">
-                          <button
-                            type="button"
-                            className="w-7 h-7 rounded border border-[var(--fg-20)] text-[var(--fg)]"
-                            onClick={() => setQuantity(line.id, line.quantity - 1)}
-                            aria-label="Decrease quantity"
-                          >
-                            −
-                          </button>
-                          <span className="text-sm w-6 text-center">{line.quantity}</span>
-                          <button
-                            type="button"
-                            className="w-7 h-7 rounded border border-[var(--fg-20)] text-[var(--fg)]"
-                            onClick={() => setQuantity(line.id, line.quantity + 1)}
-                            aria-label="Increase quantity"
-                          >
-                            +
-                          </button>
-                          <button
-                            type="button"
-                            className="ml-auto text-xs text-[var(--fg-40)] hover:text-[var(--accent)]"
-                            onClick={() => removeItem(line.id)}
-                          >
-                            Remove
-                          </button>
-                        </div>
                       </div>
-                      <p className="text-sm text-[var(--accent)] font-medium">
-                        ${line.lineTotal}
-                      </p>
+                      <button
+                        type="button"
+                        onClick={() => remove(item.id)}
+                        className="text-ink-soft hover:text-red-500 self-start"
+                        aria-label="Remove"
+                      >
+                        <Pi name="pi-trash" className="text-sm" />
+                      </button>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
 
-            {lines.length > 0 && (
-              <div className="border-t border-[var(--fg-10)] px-5 py-5 space-y-3">
+            {items.length > 0 && (
+              <div className="border-t border-[var(--fg-10)] px-5 py-4 space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-[var(--fg-60)]">Subtotal (USD)</span>
-                  <span className="text-[var(--fg)] font-semibold">${subtotal}</span>
+                  <span className="text-ink-soft">Total</span>
+                  <span className="font-semibold text-foreground">{totalPrice} USD</span>
                 </div>
-                <p className="text-[10px] text-[var(--fg-40)] leading-relaxed">
-                  Indicative pricing. Final quote and payment arrangements confirmed after
-                  your booking request.
+                <p className="text-xs text-ink-soft">
+                  Complete booking from the product page checkout flow.
                 </p>
                 <Link
-                  href="/cart"
+                  href={`/product/${items[0].productId}`}
                   onClick={closeCart}
-                  className="block text-center border border-[var(--fg-20)] text-[var(--fg)] py-3 rounded text-sm hover:border-[var(--accent)] transition-colors"
+                  className="flex w-full items-center justify-center rounded bg-[var(--accent)] text-[var(--accent-fg)] px-4 py-3 text-sm font-semibold hover:bg-[var(--accent-hover)]"
                 >
-                  View cart
-                </Link>
-                <Link
-                  href="/checkout"
-                  onClick={closeCart}
-                  className="block text-center bg-[var(--accent)] text-[var(--accent-fg)] py-3 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
-                >
-                  Checkout
+                  Continue booking
                 </Link>
               </div>
             )}

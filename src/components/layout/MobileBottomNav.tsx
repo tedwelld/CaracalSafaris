@@ -8,13 +8,13 @@ const tabs = [
   { label: "Home", href: "/", icon: "pi-home" },
   { label: "Trips", href: "/destinations", icon: "pi-map-marker" },
   { label: "Plan", href: "/plan-your-journey", icon: "pi-compass", primary: true },
-  { label: "Experiences", href: "/experiences", icon: "pi-camera" },
+  { label: "Experiences", href: "/experiences", icon: "pi-compass" },
   { label: "Cart", href: "/cart", icon: "pi-shopping-cart" },
 ] as const;
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
-  const { itemCount } = useCart();
+  const { count: itemCount } = useCart();
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";

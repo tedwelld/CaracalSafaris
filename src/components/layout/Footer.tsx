@@ -104,6 +104,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-[var(--fg-10)] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[var(--fg-30)]">
           <p>© {new Date().getFullYear()} Caracal Safaris. All rights reserved.</p>
           <div className="flex gap-6">
+            <Link href="/experiences" className="hover:text-[var(--fg-60)] transition-colors">Experiences</Link>
             <Link href="/about" className="hover:text-[var(--fg-60)] transition-colors">About</Link>
             <Link href="/contact" className="hover:text-[var(--fg-60)] transition-colors">Contact</Link>
             <Link href="/plan-your-journey" className="hover:text-[var(--fg-60)] transition-colors">Plan</Link>

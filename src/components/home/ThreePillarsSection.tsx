@@ -9,7 +9,7 @@ const pillars = [
     title: "The Smoke That Thunders",
     description:
       "Victoria Falls, Livingstone Island, rainforest walks. Where nature overwhelms in the best possible way.",
-    href: "/experiences/wonder",
+    href: "/blog/wonder",
   },
   {
     image: "/images/lion.jpeg",
@@ -17,7 +17,7 @@ const pillars = [
     title: "Track the Big Five",
     description:
       "Hwange. Chobe. Open vehicles, expert trackers, and Africa's wildlife on its own terms.",
-    href: "/experiences/wild",
+    href: "/blog/wild",
   },
   {
     image: "/images/bungee.jpeg",
@@ -25,7 +25,7 @@ const pillars = [
     title: "The Edge of the Gorge",
     description:
       "Grade 5 rapids. Bungee from 111 metres. Ziplines. Microlight flights. The Zambezi Gorge is a playground.",
-    href: "/experiences/thrill",
+    href: "/blog/thrill",
   },
 ];
 

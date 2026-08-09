@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Playfair_Display, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import "primeicons/primeicons.css";
@@ -62,6 +63,9 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const bokunLoader = `https://widgets.bokun.io/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=${siteConfig.bokunChannelUUID}`;
+  const bokunConfigured = !siteConfig.bokunChannelUUID.startsWith("00000000");
+
   return (
     <html
       lang="en"
@@ -76,6 +80,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {bokunConfigured && <Script src={bokunLoader} strategy="afterInteractive" />}
         <NavbarThemeProvider>
           <CartProvider>
             <LenisProvider>

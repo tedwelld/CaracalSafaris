@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { CheckAvailabilityModal } from "@/components/bokun/CheckAvailabilityModal";
 
 export default function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  const [availOpen, setAvailOpen] = useState(false);
 
   useEffect(() => {
     const el = headlineRef.current;
@@ -38,7 +40,6 @@ export default function HeroSection() {
         sizes="100vw"
       />
 
-      {/* Dark overlay — text always needs to be white on this section */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/75" />
 
       <div className="relative z-10 container-luxury text-center px-4">
@@ -81,12 +82,13 @@ export default function HeroSection() {
           >
             Plan Your Journey
           </Link>
-          <Link
-            href="/journey"
-            className="text-white border border-white/40 px-8 py-4 rounded text-sm tracking-wide hover:border-white hover:bg-white/5 transition-all duration-300 min-w-[200px] text-center"
+          <button
+            type="button"
+            onClick={() => setAvailOpen(true)}
+            className="text-white border border-white/40 px-8 py-4 rounded text-sm tracking-wide hover:border-white hover:bg-white/5 transition-all duration-300 min-w-[200px] text-center cursor-pointer"
           >
-            Explore The Triangle
-          </Link>
+            Check Availability
+          </button>
         </motion.div>
       </div>
 
@@ -101,6 +103,8 @@ export default function HeroSection() {
           <i className="pi pi-arrow-down" style={{ fontSize: "20px" }} />
         </div>
       </motion.div>
+
+      <CheckAvailabilityModal open={availOpen} onClose={() => setAvailOpen(false)} />
     </section>
   );
 }

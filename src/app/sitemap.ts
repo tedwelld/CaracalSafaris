@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { destinations } from "@/data/destinations";
-import { experiences } from "@/data/experiences";
+import { blogPosts } from "@/data/blog";
+import { tours } from "@/data/tours";
 import { siteConfig } from "@/data/siteConfig";
 
 const baseUrl = siteConfig.url;
@@ -18,7 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     { url: `${baseUrl}/journey`, lastModified, changeFrequency: "monthly" as const, priority: 0.9 },
     { url: `${baseUrl}/destinations`, lastModified, changeFrequency: "monthly" as const, priority: 0.9 },
-    { url: `${baseUrl}/experiences`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
+    { url: `${baseUrl}/experiences`, lastModified, changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${baseUrl}/blog`, lastModified, changeFrequency: "weekly" as const, priority: 0.6 },
     { url: `${baseUrl}/about`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${baseUrl}/plan-your-journey`, lastModified, changeFrequency: "weekly" as const, priority: 0.95 },
     { url: `${baseUrl}/contact`, lastModified, changeFrequency: "monthly" as const, priority: 0.7 },
@@ -31,12 +33,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const expPages = experiences.map((e) => ({
-    url: `${baseUrl}/experiences/${e.slug}`,
+  const blogPages = blogPosts.map((p) => ({
+    url: `${baseUrl}/blog/${p.slug}`,
     lastModified,
     changeFrequency: "monthly" as const,
     priority: 0.75,
   }));
 
-  return [...staticPages, ...destPages, ...expPages];
+  const tourPages = tours.map((t) => ({
+    url: `${baseUrl}/tours/${t.slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...destPages, ...blogPages, ...tourPages];
 }

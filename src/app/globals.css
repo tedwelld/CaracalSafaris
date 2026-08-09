@@ -19,6 +19,15 @@
   --color-bronze:         #8b4513;
   --color-bronze-light:   #a65d2e;
 
+  /* Aphalis-style semantic aliases → Caracal theme tokens */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-cream:      var(--cream);
+  --color-surface:    var(--bg-surface);
+  --color-ink-soft:   var(--ink-soft);
+  --color-muted:      var(--muted);
+  --color-line:       var(--line);
+
   /* Typography */
   --font-display:   var(--font-playfair), Georgia, serif;
   --font-editorial: var(--font-cormorant), Georgia, serif;
@@ -56,6 +65,12 @@
   --accent-dark:  #c44e12;
   --accent-fg:    #1f140e;
   --savanna:      #ffb020;
+
+  /* Semantic aliases for Aphalis-ported components */
+  --cream:    #1f140e;
+  --ink-soft: #c4b8a8;
+  --muted:    #140e0a;
+  --line:     color-mix(in srgb, var(--fg) 15%, transparent);
 }
 
 /* Light theme overrides — only base values needed; opacity variants auto-derive */
@@ -64,6 +79,11 @@ html.theme-light {
   --bg-alt:    #fbf4e8;
   --bg-surface:#f0e6d6;
   --fg:        #1f140e;
+
+  --cream:    #fbf4e8;
+  --ink-soft: #4a3a30;
+  --muted:    #f0e6d6;
+  --line:     color-mix(in srgb, var(--fg) 15%, transparent);
 }
 
 /* Disable native smooth scroll — Lenis handles it */
@@ -186,6 +206,35 @@ body {
     animation: none;
     opacity: 0.4;
   }
+}
+
+/* Signature accent rule (ported Bokun/blog UI) */
+.gold-rule {
+  display: inline-block;
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light));
+}
+
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+.animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Bokun widget + hide their floating cart (we use our CartDrawer) */
+.bokunWidget {
+  width: 100%;
+}
+#bokun-widgets-cart,
+#bokun-widgets-cart-wrapper,
+.bokun-widgets-cart,
+.bokun-widgets-cart-wrapper {
+  display: none !important;
 }
 
 /* ── Selection ──────────────────────────────────────────────────── */

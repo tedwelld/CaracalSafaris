@@ -61,10 +61,10 @@ export default function ExperiencesShowcaseSection() {
                 ))}
               </ul>
               <Link
-                href={`/experiences/${exp.slug}`}
+                href={`/blog/${exp.slug}`}
                 className="text-[var(--accent)] text-sm tracking-wide hover:text-[var(--accent-hover)] transition-colors"
               >
-                Explore {exp.label} experiences →
+                Read {exp.label} stories →
               </Link>
             </ScrollReveal>
           </div>

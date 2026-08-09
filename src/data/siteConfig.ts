@@ -15,6 +15,12 @@ export const siteConfig = {
     twitter: "https://twitter.com/caracalsafaris",
   },
   location: "Victoria Falls, Zimbabwe",
+  // Bokun booking channel
+  bokunChannelUUID:
+    process.env.NEXT_PUBLIC_BOKUN_CHANNEL_UUID ??
+    "00000000-0000-0000-0000-000000000000",
+  bokunFeaturedListId: process.env.NEXT_PUBLIC_BOKUN_FEATURED_LIST_ID ?? "",
+  bokunDefaultCurrency: process.env.NEXT_PUBLIC_BOKUN_DEFAULT_CURRENCY ?? "USD",
   counters: [
     { end: 3, label: "Countries", suffix: "" },
     { end: 4, label: "UNESCO Sites", suffix: "" },

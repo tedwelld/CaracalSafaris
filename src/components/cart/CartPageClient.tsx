@@ -1,125 +1,105 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/contexts/CartContext";
+import { Pi } from "@/components/Pi";
 
 export default function CartPageClient() {
-  const { lines, subtotal, setQuantity, removeItem, clearCart } = useCart();
+  const { items, totalPrice, remove, clear } = useCart();
 
-  if (lines.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="text-center py-20">
-        <h1
-          className="text-4xl text-[var(--fg)] mb-4"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Your cart is empty
-        </h1>
-        <p className="text-[var(--fg-50)] mb-8">
-          Choose activities from our experiences to build your journey.
+        <p className="text-[var(--fg-50)] mb-4">Your cart is empty.</p>
+        <p className="text-[var(--fg-40)] text-sm mb-8 max-w-md mx-auto">
+          Add tours from a product page, or browse featured listings on the home page.
         </p>
         <Link
-          href="/experiences"
-          className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-8 py-3 rounded text-sm font-semibold hover:bg-[var(--accent-hover)]"
+          href="/#featured-tours"
+          className="inline-flex items-center gap-2 bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3 rounded text-sm font-semibold hover:bg-[var(--accent-hover)]"
         >
-          Browse experiences
+          Browse tours
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-      <div className="lg:col-span-2 space-y-6">
-        <div className="flex items-center justify-between">
-          <h1
-            className="text-3xl md:text-4xl text-[var(--fg)]"
-            style={{ fontFamily: "var(--font-display)" }}
+    <div className="max-w-2xl mx-auto">
+      <ul className="space-y-4">
+        {items.map((item) => (
+          <li
+            key={item.id}
+            className="flex gap-4 rounded-xl border border-line bg-surface p-4"
           >
-            Your cart
-          </h1>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={item.imageUrl ?? "/images/victoria-falls.jpeg"}
+              alt=""
+              className="h-20 w-28 rounded-lg object-cover shrink-0"
+            />
+            <div className="flex-1 min-w-0">
+              <p className="font-medium text-foreground">{item.title}</p>
+              <p className="text-sm text-ink-soft">
+                {item.date} · {item.startTime}
+              </p>
+              <div className="mt-1 flex flex-wrap gap-x-2 text-xs text-ink-soft">
+                {Object.entries(item.participants)
+                  .filter(([, c]) => c > 0)
+                  .map(([catId, count]) => {
+                    const cat = item.pricingCategories.find((c) => c.id === Number(catId));
+                    return (
+                      <span key={catId}>
+                        {count}× {cat?.title ?? catId}
+                      </span>
+                    );
+                  })}
+              </div>
+              <p className="mt-2 font-semibold text-gold-dark">
+                {item.totalPrice} {item.currency}
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 items-end">
+              <Link
+                href={`/product/${item.productId}`}
+                className="text-sm text-gold-dark hover:underline"
+              >
+                Book
+              </Link>
+              <button
+                type="button"
+                onClick={() => remove(item.id)}
+                className="text-ink-soft hover:text-red-500"
+                aria-label="Remove"
+              >
+                <Pi name="pi-trash" />
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-8 flex items-center justify-between border-t border-line pt-6">
+        <div>
+          <p className="text-sm text-ink-soft">Total</p>
+          <p className="text-2xl font-semibold text-foreground">{totalPrice} USD</p>
+        </div>
+        <div className="flex gap-3">
           <button
             type="button"
-            onClick={clearCart}
-            className="text-xs text-[var(--fg-40)] hover:text-[var(--accent)]"
+            onClick={clear}
+            className="text-sm text-ink-soft hover:text-foreground"
           >
-            Clear all
+            Clear
           </button>
+          <Link
+            href={`/product/${items[0].productId}`}
+            className="rounded bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3 text-sm font-semibold hover:bg-[var(--accent-hover)]"
+          >
+            Continue booking
+          </Link>
         </div>
-
-        <ul className="divide-y divide-[var(--fg-10)] border-y border-[var(--fg-10)]">
-          {lines.map((line) => (
-            <li key={line.id} className="py-6 flex gap-4">
-              <div className="relative h-24 w-28 flex-shrink-0 overflow-hidden rounded-sm">
-                <Image src={line.image} alt={line.name} fill className="object-cover" sizes="112px" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[var(--fg)]" style={{ fontFamily: "var(--font-display)" }}>
-                  {line.name}
-                </p>
-                <p className="text-xs text-[var(--fg-40)] mt-1">
-                  {line.destinationHint} · {line.duration}
-                </p>
-                <div className="mt-3 flex items-center gap-2">
-                  <button
-                    type="button"
-                    className="w-8 h-8 rounded border border-[var(--fg-20)]"
-                    onClick={() => setQuantity(line.id, line.quantity - 1)}
-                  >
-                    −
-                  </button>
-                  <span className="w-8 text-center text-sm">{line.quantity}</span>
-                  <button
-                    type="button"
-                    className="w-8 h-8 rounded border border-[var(--fg-20)]"
-                    onClick={() => setQuantity(line.id, line.quantity + 1)}
-                  >
-                    +
-                  </button>
-                  <button
-                    type="button"
-                    className="ml-4 text-xs text-[var(--fg-40)] hover:text-[var(--accent)]"
-                    onClick={() => removeItem(line.id)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="text-[var(--accent)] font-semibold">${line.lineTotal}</p>
-                <p className="text-xs text-[var(--fg-40)]">${line.priceUsd} each</p>
-              </div>
-            </li>
-          ))}
-        </ul>
       </div>
-
-      <aside className="bg-[var(--fg-05)] border border-[var(--fg-10)] rounded-sm p-6 h-fit">
-        <h2 className="text-sm tracking-widest uppercase text-[var(--accent)] mb-4">
-          Summary
-        </h2>
-        <div className="flex justify-between text-sm mb-2">
-          <span className="text-[var(--fg-60)]">Subtotal</span>
-          <span className="text-[var(--fg)] font-semibold">${subtotal} USD</span>
-        </div>
-        <p className="text-xs text-[var(--fg-40)] mb-6 leading-relaxed">
-          Payment is arranged after we confirm your booking request. Prices shown are
-          indicative per adult.
-        </p>
-        <Link
-          href="/checkout"
-          className="block text-center bg-[var(--accent)] text-[var(--accent-fg)] py-3.5 rounded text-sm font-semibold hover:bg-[var(--accent-hover)]"
-        >
-          Proceed to checkout
-        </Link>
-        <Link
-          href="/experiences"
-          className="block text-center text-sm text-[var(--fg-50)] mt-4 hover:text-[var(--fg)]"
-        >
-          Continue browsing
-        </Link>
-      </aside>
     </div>
   );
 }

@@ -1,23 +1,39 @@
-"use client";
-
-import AddToCartButton from "@/components/cart/AddToCartButton";
+import Link from "next/link";
 import type { Activity } from "@/types/cart";
 
+/** Legacy activities grid — points to Bokun featured tours. */
 export default function ExperienceActivities({ activities }: { activities: Activity[] }) {
+  if (activities.length === 0) {
+    return (
+      <p className="text-[var(--fg-50)] text-sm">
+        Browse live bookable tours on the{" "}
+        <Link href="/#featured-tours" className="text-[var(--accent)] hover:underline">
+          home page
+        </Link>
+        .
+      </p>
+    );
+  }
+
   return (
     <ul className="space-y-4">
       {activities.map((a) => (
         <li
           key={a.id}
-          className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 border border-[var(--fg-10)] rounded-sm p-4"
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[var(--fg-10)] pb-4"
         >
-          <div className="flex-1 min-w-0">
-            <p className="text-[var(--fg)] font-medium">{a.name}</p>
-            <p className="text-xs text-[var(--fg-40)] mt-0.5">
-              {a.duration} · from ${a.priceUsd} USD / adult
+          <div>
+            <p className="font-medium text-[var(--fg)]">{a.name}</p>
+            <p className="text-sm text-[var(--fg-50)]">
+              {a.duration} · from ${a.priceUsd}
             </p>
           </div>
-          <AddToCartButton activityId={a.id} className="w-full sm:w-auto" />
+          <Link
+            href="/#featured-tours"
+            className="text-sm text-[var(--accent)] hover:underline"
+          >
+            Book via Bókun →
+          </Link>
         </li>
       ))}
     </ul>

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Section } from "@/components/ui/Section";
-import { FeaturedListings } from "@/components/bokun/FeaturedListings";
+import { ExperiencesCatalog } from "@/components/bokun/ExperiencesCatalog";
 
 export const metadata: Metadata = {
   title: "Experiences",
   description:
-    "Book safari experiences across Zimbabwe, Zambia and Botswana — live availability powered by Bókun.",
+    "Search and filter safari experiences across Zimbabwe, Zambia and Botswana — live availability powered by Bókun.",
 };
 
 export default function ExperiencesPage() {
@@ -14,14 +14,11 @@ export default function ExperiencesPage() {
     <>
       <PageHeader
         title="Experiences"
-        subtitle="Game drives, boat cruises, walks and adventures — check live availability and book online."
+        subtitle="Search, filter and book game drives, cruises, walks and adventures — live availability powered by Bókun."
         image="/images/elephant-eye.jpeg"
       />
       <Section>
-        <FeaturedListings
-          limit={undefined}
-          emptyMessage="Experiences will appear here once Bókun is connected. Check back soon, or plan a private journey with us."
-        />
+        <ExperiencesCatalog />
       </Section>
     </>
   );

@@ -5,28 +5,14 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { siteConfig } from "@/data/siteConfig";
 
-const STORAGE_KEY = "caracal-welcome-seen";
-
 export default function SafariWelcome() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    try {
-      if (localStorage.getItem(STORAGE_KEY)) return;
-      setVisible(true);
-    } catch {
-      setVisible(true);
-    }
-  }, []);
-
-  function dismiss() {
-    try {
-      localStorage.setItem(STORAGE_KEY, "1");
-    } catch {
-      /* ignore */
-    }
-    setVisible(false);
-  }
+    if (!visible) return;
+    const timer = window.setTimeout(() => setVisible(false), 4000);
+    return () => window.clearTimeout(timer);
+  }, [visible]);
 
   return (
     <AnimatePresence>
@@ -128,7 +114,7 @@ export default function SafariWelcome() {
             </motion.h2>
 
             <motion.p
-              className="text-[#fbf4e8]/70 text-base sm:text-lg mb-10"
+              className="text-[#fbf4e8]/70 text-base sm:text-lg"
               style={{ fontFamily: "var(--font-editorial)", fontStyle: "italic" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -136,18 +122,6 @@ export default function SafariWelcome() {
             >
               {siteConfig.tagline}
             </motion.p>
-
-            <motion.button
-              type="button"
-              onClick={dismiss}
-              className="bg-[#f06522] text-[#1f140e] px-8 py-3.5 rounded text-sm font-semibold tracking-wide hover:bg-[#ff7a3d] transition-colors"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.9 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Enter the site
-            </motion.button>
           </div>
         </motion.div>
       )}

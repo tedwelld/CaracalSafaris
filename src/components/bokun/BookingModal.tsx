@@ -41,6 +41,9 @@ type Props = {
   pricingCategories: PricingCategory[];
   startTimes: string[];
   currency: string;
+  /** Resume checkout from cart at the last saved milestone. */
+  resume?: boolean;
+  resumeCartItemId?: string;
 };
 
 type Milestone = 1 | 2 | 3 | 4;
@@ -65,9 +68,10 @@ export function BookingModal({
   open, onClose, productId, title, description, excerpt, highlights, inclusions, exclusions,
   knowBeforeYouGo, location, meetingType, durationText, difficulty, reviewRating, reviewCount,
   vendor, bookingType, capacityType, maxParticipants, cancellationPolicy, requirements, photoUrls,
-  pricingCategories, startTimes, currency,
+  pricingCategories, startTimes, currency, resume = false, resumeCartItemId,
 }: Props) {
   const cart = useCart();
+  const activeCartItemId = useRef<string | null>(resumeCartItemId ?? null);
 
   // Milestone state
   const [milestone, setMilestone] = useState<Milestone>(1);
@@ -170,31 +174,111 @@ export function BookingModal({
   const startDay = new Date(calYear, calMonth, 1).getDay();
   const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+  const persistDraft = useCallback(
+    (nextMilestone: Milestone) => {
+      const itemId =
+        activeCartItemId.current ??
+        cart.items.find((i) => i.productId === productId)?.id;
+      if (!itemId) return;
+      cart.saveCheckoutDraft({
+        cartItemId: itemId,
+        productId,
+        milestone: nextMilestone,
+        customer,
+        paymentOption,
+        payTiming,
+        acceptPolicy,
+      });
+    },
+    [cart, productId, customer, paymentOption, payTiming, acceptPolicy],
+  );
+
   const seeded = useRef(false);
   useEffect(() => {
-    if (open && !seeded.current) {
-      seeded.current = true;
+    if (!open) {
+      seeded.current = false;
+      return;
+    }
+    // Wait for cart localStorage hydrate before seeding a resume session
+    if (resume && !cart.hydrated) return;
+    if (seeded.current) return;
+    seeded.current = true;
+
+    const prices: Record<number, number> = {};
+    for (const pc of pricingCategories) prices[pc.id] = pc.price;
+    setCategoryPrices(prices);
+    setBookingResult(null);
+    setSubmitError("");
+    setInnerTab("description");
+    setSelectedImg(0);
+    setCalOffset(0);
+    setJustAdded(false);
+
+    const cartItem =
+      (resumeCartItemId
+        ? cart.items.find((i) => i.id === resumeCartItemId)
+        : null) ??
+      cart.items.find((i) => i.productId === productId) ??
+      null;
+    const draft = cart.getDraftForProduct(productId);
+    const shouldResume = resume && (!!cartItem || !!draft);
+
+    if (shouldResume && cartItem) {
+      activeCartItemId.current = cartItem.id;
+      setSelectedDate(cartItem.date);
+      setSelectedTime(cartItem.startTime);
+      setParticipants({ ...cartItem.participants });
+      setShowCart(false);
+      if (draft) {
+        setCustomer(draft.customer);
+        setPaymentOption(draft.paymentOption);
+        setPayTiming(draft.payTiming);
+        setAcceptPolicy(draft.acceptPolicy);
+        setMilestone(draft.milestone >= 2 ? draft.milestone : 2);
+      } else {
+        setMilestone(2);
+      }
+    } else if (shouldResume && draft) {
+      activeCartItemId.current = draft.cartItemId;
+      setCustomer(draft.customer);
+      setPaymentOption(draft.paymentOption);
+      setPayTiming(draft.payTiming);
+      setAcceptPolicy(draft.acceptPolicy);
+      setMilestone(draft.milestone >= 2 ? draft.milestone : 2);
+      setShowCart(false);
       const init: Record<number, number> = {};
-      const prices: Record<number, number> = {};
       for (const pc of pricingCategories) {
         init[pc.id] = pc.ticketCategory === "ADULT" || pc.defaultCategory ? 1 : 0;
-        prices[pc.id] = pc.price;
       }
       setParticipants(init);
-      setCategoryPrices(prices);
+      setSelectedDate(new Date().toISOString().slice(0, 10));
+      setSelectedTime("");
+    } else {
+      activeCartItemId.current = null;
+      const init: Record<number, number> = {};
+      for (const pc of pricingCategories) {
+        init[pc.id] = pc.ticketCategory === "ADULT" || pc.defaultCategory ? 1 : 0;
+      }
+      setParticipants(init);
       setSelectedDate(new Date().toISOString().slice(0, 10));
       setSelectedTime("");
       setMilestone(1);
       setShowCart(false);
-      setJustAdded(false);
-      setBookingResult(null);
-      setSubmitError("");
-      setInnerTab("description");
-      setSelectedImg(0);
-      setCalOffset(0);
+      setCustomer({ firstName: "", lastName: "", email: "", phone: "", nationality: "" });
+      setPaymentOption("full");
+      setPayTiming("now");
+      setAcceptPolicy(false);
     }
-    if (!open) seeded.current = false;
-  }, [open, pricingCategories, fetchAvailability]);
+  }, [
+    open,
+    pricingCategories,
+    resume,
+    resumeCartItemId,
+    productId,
+    cart.hydrated,
+    cart.items,
+    cart.getDraftForProduct,
+  ]);
 
   useEffect(() => {
     if (!open) return;
@@ -204,12 +288,25 @@ export function BookingModal({
     fetchAvailability(d.toISOString().slice(0, 10));
   }, [calOffset, open, fetchAvailability]);
 
+  // Persist progress whenever the guest advances past product selection
+  useEffect(() => {
+    if (!open || milestone < 2) return;
+    persistDraft(milestone);
+  }, [open, milestone, customer, paymentOption, payTiming, acceptPolicy, persistDraft]);
+
+  const handleClose = useCallback(() => {
+    if (milestone >= 2 || (showCart && cart.items.some((i) => i.productId === productId))) {
+      persistDraft(milestone >= 2 ? milestone : 2);
+    }
+    onClose();
+  }, [milestone, showCart, cart.items, productId, persistDraft, onClose]);
+
   useEffect(() => {
     if (!open) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [open, onClose]);
+  }, [open, handleClose]);
 
   if (!open) return null;
 
@@ -222,11 +319,22 @@ export function BookingModal({
   const submitLabel = submitting ? "Processing..." : payTiming === "now" ? `Pay ${currencySymbol}${paymentAmount} now` : "Confirm booking";
 
   const addToCart = () => {
+    const id = activeCartItemId.current ?? crypto.randomUUID();
+    activeCartItemId.current = id;
     cart.add({
-      id: crypto.randomUUID(), productId, title, imageUrl: allImages[0],
+      id, productId, title, imageUrl: allImages[0],
       date: selectedDate, startTime: selectedTime,
       participants: { ...participants }, pricingCategories,
       totalPrice, currency,
+    });
+    cart.saveCheckoutDraft({
+      cartItemId: id,
+      productId,
+      milestone: 2,
+      customer,
+      paymentOption,
+      payTiming,
+      acceptPolicy,
     });
     setJustAdded(true);
     setShowCart(true);
@@ -236,6 +344,7 @@ export function BookingModal({
     setShowCart(false);
     setJustAdded(false);
     setMilestone(2);
+    persistDraft(2);
   };
 
   const submitBooking = async () => {
@@ -261,6 +370,7 @@ export function BookingModal({
       }
       const data = await res.json();
       setBookingResult({ reference: data.reference });
+      cart.clearCheckoutDraft();
       cart.clear();
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : "Booking failed");
@@ -279,7 +389,7 @@ export function BookingModal({
   if (!open) return null;
 
   const closeBtn = (
-    <button type="button" onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft hover:bg-muted hover:text-foreground transition-colors">
+    <button type="button" onClick={handleClose} className="flex h-8 w-8 items-center justify-center rounded-full text-ink-soft hover:bg-muted hover:text-foreground transition-colors">
       <Pi name="pi-times" className="text-lg" />
     </button>
   );
@@ -624,13 +734,13 @@ export function BookingModal({
       <h3 className="mt-4 text-xl text-foreground">Booking confirmed!</h3>
       <p className="mt-2 text-sm text-ink-soft">Reference: <span className="font-medium text-foreground">{bookingResult?.reference}</span></p>
       <p className="mt-1 text-sm text-ink-soft">We'll send confirmation to {customer.email}.</p>
-      <Button className="mt-6" onClick={onClose}>Done</Button>
+      <Button className="mt-6" onClick={handleClose}>Done</Button>
     </div>
   );
 
   const modalContent = (
     <div className="fixed inset-0 z-[9999] flex items-start justify-center bg-black/80 px-4 pt-24 pb-8 overflow-y-auto"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}>
       <div className="flex w-full max-w-5xl max-h-[90vh] flex-col rounded-3xl border border-line bg-surface shadow-2xl overflow-hidden">
         {/* Top bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-line shrink-0">

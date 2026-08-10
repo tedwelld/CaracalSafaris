@@ -15,7 +15,7 @@ export default function CartPageClient() {
           Add tours from a product page, or browse featured listings on the home page.
         </p>
         <Link
-          href="/#featured-tours"
+          href="/experiences"
           className="inline-flex items-center gap-2 bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3 rounded text-sm font-semibold hover:bg-[var(--accent-hover)]"
         >
           Browse tours
@@ -61,10 +61,10 @@ export default function CartPageClient() {
             </div>
             <div className="flex flex-col gap-2 items-end">
               <Link
-                href={`/product/${item.productId}`}
+                href={`/product/${item.productId}?resume=1&item=${encodeURIComponent(item.id)}`}
                 className="text-sm text-gold-dark hover:underline"
               >
-                Book
+                Continue
               </Link>
               <button
                 type="button"
@@ -93,7 +93,7 @@ export default function CartPageClient() {
             Clear
           </button>
           <Link
-            href={`/product/${items[0].productId}`}
+            href={`/product/${items[0].productId}?resume=1&item=${encodeURIComponent(items[0].id)}`}
             className="rounded bg-[var(--accent)] text-[var(--accent-fg)] px-6 py-3 text-sm font-semibold hover:bg-[var(--accent-hover)]"
           >
             Continue booking

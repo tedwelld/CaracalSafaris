@@ -14,7 +14,7 @@ export default function CheckoutForm() {
     return (
       <div className="text-center py-16">
         <p className="text-[var(--fg-50)] mb-6">Add a tour before continuing.</p>
-        <Link href="/#featured-tours" className="text-[var(--accent)] hover:text-[var(--accent-hover)]">
+        <Link href="/experiences" className="text-[var(--accent)] hover:text-[var(--accent-hover)]">
           Browse tours →
         </Link>
       </div>

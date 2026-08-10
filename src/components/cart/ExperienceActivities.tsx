@@ -7,7 +7,7 @@ export default function ExperienceActivities({ activities }: { activities: Activ
     return (
       <p className="text-[var(--fg-50)] text-sm">
         Browse live bookable tours on the{" "}
-        <Link href="/#featured-tours" className="text-[var(--accent)] hover:underline">
+        <Link href="/experiences" className="text-[var(--accent)] hover:underline">
           home page
         </Link>
         .
@@ -29,7 +29,7 @@ export default function ExperienceActivities({ activities }: { activities: Activ
             </p>
           </div>
           <Link
-            href="/#featured-tours"
+            href="/experiences"
             className="text-sm text-[var(--accent)] hover:underline"
           >
             Book via Bókun →

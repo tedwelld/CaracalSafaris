@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Pi } from "@/components/Pi";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppBookButton } from "@/components/bokun/WhatsAppBookButton";
 import { BookingModal } from "@/components/bokun/BookingModal";
+import { useCart } from "@/contexts/CartContext";
 
 type Props = {
   productId: number;
@@ -63,7 +65,29 @@ export function ProductBookingPanel({
   pricingCategories,
   startTimes,
 }: Props) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const { hydrated } = useCart();
+  const resume = searchParams.get("resume") === "1";
+  const resumeCartItemId = searchParams.get("item") ?? undefined;
+
   const [showModal, setShowModal] = useState(false);
+  const [resumeMode, setResumeMode] = useState(false);
+
+  useEffect(() => {
+    if (resume && hydrated) {
+      setResumeMode(true);
+      setShowModal(true);
+    }
+  }, [resume, hydrated]);
+
+  const closeModal = () => {
+    setShowModal(false);
+    setResumeMode(false);
+    if (resume) {
+      router.replace(`/product/${productId}`, { scroll: false });
+    }
+  };
 
   const selectedDate = availabilities.find((a: any) => !a.soldOut);
   const defaultPrice = selectedDate?.defaultPrice?.amount;
@@ -88,7 +112,7 @@ export function ProductBookingPanel({
             </div>
           )}
 
-          <Button className="w-full" size="lg" onClick={() => setShowModal(true)}>
+          <Button className="w-full" size="lg" onClick={() => { setResumeMode(false); setShowModal(true); }}>
             <Pi name="pi-calendar" className="text-lg" />
             Book now
           </Button>
@@ -103,7 +127,7 @@ export function ProductBookingPanel({
       {showModal && (
         <BookingModal
           open={showModal}
-          onClose={() => setShowModal(false)}
+          onClose={closeModal}
           productId={productId}
           title={title}
           description={description}
@@ -128,6 +152,8 @@ export function ProductBookingPanel({
           pricingCategories={pricingCategories}
           startTimes={startTimes}
           currency={currency}
+          resume={resumeMode}
+          resumeCartItemId={resumeCartItemId}
         />
       )}
     </>

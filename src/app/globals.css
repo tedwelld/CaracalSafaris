@@ -179,8 +179,16 @@ body {
 
 .brand-surface {
   position: relative;
-  overflow: hidden;
   isolation: isolate;
+}
+
+/* Clips the animated glow without clipping dropdowns / overflowing UI */
+.brand-surface__clip {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .brand-surface__glow {
@@ -196,7 +204,7 @@ body {
   animation: savanna-glow 14s ease-in-out infinite, savanna-drift 22s ease-in-out infinite;
 }
 
-.brand-surface > *:not(.brand-surface__glow) {
+.brand-surface > *:not(.brand-surface__clip):not(.brand-surface__glow) {
   position: relative;
   z-index: 1;
 }

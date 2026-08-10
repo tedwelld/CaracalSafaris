@@ -24,8 +24,10 @@ const linkClass =
 export default function Footer() {
   return (
     <footer className="brand-surface bg-[var(--bg-alt)] text-[var(--fg-70)] border-t border-[var(--fg-10)] transition-colors duration-400">
-      <div className="brand-surface__glow" aria-hidden />
-      <div className="container-luxury py-16">
+      <div className="brand-surface__clip" aria-hidden>
+        <div className="brand-surface__glow" />
+      </div>
+      <div className="container-luxury py-16 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>

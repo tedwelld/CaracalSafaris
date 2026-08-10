@@ -41,6 +41,11 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [{ url: "/images/caracal-logo.png", type: "image/png" }],
+    apple: [{ url: "/images/caracal-logo.png", type: "image/png" }],
+    shortcut: ["/images/caracal-logo.png"],
+  },
   alternates: {
     canonical: "/",
   },

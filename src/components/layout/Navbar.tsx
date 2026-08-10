@@ -136,14 +136,18 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Centered logo — full lockup includes brand name */}
-          <Link href="/" className="flex items-center justify-center flex-shrink-0 group">
+          {/* Centered Caracal Africa Safaris lockup */}
+          <Link
+            href="/"
+            className="flex items-center justify-center flex-shrink-0 group"
+            aria-label={`${siteConfig.name} home`}
+          >
             <Image
-              src={siteConfig.logo}
-              alt={siteConfig.name}
-              width={200}
-              height={72}
-              className="h-12 w-auto max-w-[160px] sm:max-w-[180px] object-contain transition-transform duration-500 group-hover:scale-105"
+              src="/images/caracal-logo.png"
+              alt="Caracal Africa Safaris"
+              width={240}
+              height={88}
+              className="h-14 w-auto max-w-[200px] sm:h-16 sm:max-w-[240px] object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-105"
               priority
             />
           </Link>

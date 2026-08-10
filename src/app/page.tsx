@@ -7,10 +7,12 @@ import FeaturedToursSection from "@/components/home/FeaturedToursSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import TrustBadgesSection from "@/components/home/TrustBadgesSection";
 import FinalCtaSection from "@/components/home/FinalCtaSection";
+import SafariWelcome from "@/components/home/SafariWelcome";
 
 export default function Home() {
   return (
     <>
+      <SafariWelcome />
       <HeroSection />
       <BrandIntroSection />
       <HowItWorksSection />

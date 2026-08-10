@@ -9,12 +9,12 @@ export default function ExperiencesShowcaseSection() {
   return (
     <SectionWrapper id="experiences" background="dark">
       <ScrollReveal className="mb-16">
-        <SectionLabel>What We Do</SectionLabel>
+        <SectionLabel>From the field</SectionLabel>
         <h2
           className="text-[var(--fg)] text-4xl md:text-5xl max-w-lg"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Experiences that stay with you
+          Stories from our routes
         </h2>
       </ScrollReveal>
 

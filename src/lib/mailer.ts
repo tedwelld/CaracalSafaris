@@ -39,7 +39,7 @@ export const transporter = nodemailer.createTransport({
   socketTimeout:     25_000,
 });
 
-export const MAIL_FROM = `Caracal Safaris <${cfg?.EmailUsername ?? process.env.EMAIL_USERNAME}>`;
+export const MAIL_FROM = `Caracal Africa Safaris <${cfg?.EmailUsername ?? process.env.EMAIL_USERNAME}>`;
 
 export const ADMIN_EMAILS: string[] =
   settings?.adminEmails ??

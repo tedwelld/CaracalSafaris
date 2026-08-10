@@ -112,7 +112,7 @@ function drawPageHeader(doc: InstanceType<typeof PDFDocument>, ref: string) {
     .fillColor(IVORY)
     .fontSize(14)
     .font("Helvetica-Bold")
-    .text("Caracal Safaris", PAGE_W / 2, 22, {
+    .text("Caracal Africa Safaris", PAGE_W / 2, 22, {
       align: "right",
       width: PAGE_W / 2 - MARGIN,
     });
@@ -128,7 +128,7 @@ function drawPageHeader(doc: InstanceType<typeof PDFDocument>, ref: string) {
     .fillColor(IVORY)
     .fontSize(7.5)
     .font("Helvetica-Oblique")
-    .text("The Smoke That Thunders", PAGE_W / 2, 54, {
+    .text("Born on the Zambezi. Built for you.", PAGE_W / 2, 54, {
       align: "right",
       width: PAGE_W / 2 - MARGIN,
     });
@@ -153,7 +153,7 @@ function drawPageFooter(doc: InstanceType<typeof PDFDocument>) {
     .font("Helvetica")
     .opacity(0.5)
     .text(
-      "Caracal Safaris  ·  Victoria Falls, Zimbabwe  ·  caracalsafaris.com",
+      "Caracal Africa Safaris  ·  Victoria Falls, Zimbabwe  ·  caracalsafaris.com",
       MARGIN,
       pageH - 22,
       { align: "center", width: PAGE_W - MARGIN * 2 }
@@ -274,7 +274,7 @@ export function generateClientPdf(data: EnquiryData, ref: string): Promise<Buffe
       .fontSize(9.5)
       .font("Helvetica-Oblique")
       .text(
-        "“Africa is not a destination. It is a state of wonder.”",
+        "“A safari shaped around how you travel — not a fixed circuit.”",
         MARGIN, y,
         { width: TABLE_W }
       );
@@ -324,7 +324,7 @@ export function generateClientPdf(data: EnquiryData, ref: string): Promise<Buffe
       .fillColor(GOLD)
       .fontSize(10)
       .font("Helvetica-Bold")
-      .text("The Caracal Safaris Team", MARGIN, y);
+      .text("The Caracal Africa Safaris Team", MARGIN, y);
 
     drawPageFooter(doc);
     doc.end();

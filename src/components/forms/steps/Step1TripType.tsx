@@ -23,7 +23,7 @@ export default function Step1TripType({ data, update }: Props) {
         className="text-[var(--fg)] text-3xl md:text-4xl mb-3"
         style={{ fontFamily: "var(--font-display)" }}
       >
-        What kind of journey?
+        What kind of safari?
       </h2>
       <p className="text-[var(--fg-50)] mb-10">Tell us who you&apos;re travelling with.</p>
 

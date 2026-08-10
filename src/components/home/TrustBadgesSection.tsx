@@ -65,11 +65,11 @@ export default function TrustBadgesSection() {
             className="text-[var(--fg)] text-3xl md:text-4xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Recognised for Excellence
+            Trusted by guests who return
           </h2>
           <p className="text-[var(--fg-50)] mt-4 max-w-md mx-auto text-sm leading-relaxed">
-            Our commitment to extraordinary journeys has earned us the highest
-            honour from the world&apos;s most trusted travel platform.
+            Consistent guest feedback on TripAdvisor reflects how we guide —
+            attentive, local, and unhurried.
           </p>
         </div>
       </ScrollReveal>

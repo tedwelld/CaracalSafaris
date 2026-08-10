@@ -13,7 +13,7 @@ const quickLinks = [
   { label: "Blogs", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Plan Your Journey", href: "/plan-your-journey" },
+  { label: "Plan a safari", href: "/plan-your-journey" },
   { label: "Cart", href: "/cart" },
   { label: "Checkout", href: "/checkout" },
 ];
@@ -40,13 +40,11 @@ export default function Footer() {
                 className="h-16 w-auto max-w-[220px] object-contain mb-3"
               />
               <p className="text-[var(--accent)] text-xs tracking-widest uppercase">
-                The Smoke That Thunders
+                {siteConfig.tagline}
               </p>
             </div>
             <p className="text-sm leading-relaxed max-w-sm mb-6">
-              Private journeys through Zimbabwe, Zambia &amp; Botswana within the
-              Victoria Falls Triangle. Local expertise, dual-licensed guides,
-              seamless cross-border travel.
+              {siteConfig.description}
             </p>
             <div className="flex gap-4">
               {["Instagram", "Facebook", "Twitter"].map((s) => (
@@ -151,7 +149,7 @@ export default function Footer() {
                   href="/plan-your-journey"
                   className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-4 py-2 rounded text-xs font-semibold hover:bg-[var(--accent-hover)] transition-colors"
                 >
-                  Plan Your Journey →
+                  Start planning →
                 </Link>
               </li>
             </ul>
@@ -159,7 +157,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-[var(--fg-10)] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-xs text-[var(--fg-30)]">
-          <p>© {new Date().getFullYear()} Caracal Safaris. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Caracal Africa Safaris. All rights reserved.</p>
           <nav
             aria-label="Footer secondary links"
             className="flex flex-wrap gap-x-5 gap-y-2"

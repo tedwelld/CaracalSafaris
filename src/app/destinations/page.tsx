@@ -9,7 +9,7 @@ import { destinations } from "@/data/destinations";
 export const metadata: Metadata = {
   title: "Destinations",
   description:
-    "Explore Victoria Falls, Livingstone, Chobe and Hwange — four extraordinary destinations within the Victoria Falls Triangle.",
+    "Victoria Falls, Livingstone, Chobe and Hwange — the regions Caracal Africa Safaris knows best.",
 };
 
 export default function DestinationsPage() {
@@ -27,12 +27,12 @@ export default function DestinationsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/80" />
         <div className="relative z-10 container-luxury">
-          <SectionLabel>The Victoria Falls Triangle</SectionLabel>
+          <SectionLabel>Our home ground</SectionLabel>
           <h1
             className="text-white text-5xl md:text-7xl leading-none"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
           >
-            Four destinations.
+            Four regions we know well.
           </h1>
         </div>
       </section>

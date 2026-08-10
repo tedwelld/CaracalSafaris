@@ -18,10 +18,10 @@ export function emailShell(title: string, body: string) {
               Zimbabwe · Zambia · Botswana
             </p>
             <h1 style="margin:8px 0 0;color:#fbf4e8;font-size:26px;font-weight:normal;font-family:Georgia,serif;">
-              Caracal Safaris
+              Caracal Africa Safaris
             </h1>
             <p style="margin:6px 0 0;color:#f06522;font-size:12px;font-style:italic;font-family:Georgia,serif;">
-              The Smoke That Thunders
+              Born on the Zambezi. Built for you.
             </p>
           </td>
         </tr>
@@ -33,7 +33,7 @@ export function emailShell(title: string, body: string) {
         <tr>
           <td style="background:#1f140e;padding:24px 40px;text-align:center;">
             <p style="margin:0;color:#fbf4e8;font-size:11px;font-family:Arial,sans-serif;opacity:0.5;">
-              Caracal Safaris · Victoria Falls, Zimbabwe
+              Caracal Africa Safaris · Victoria Falls, Zimbabwe
             </p>
             <p style="margin:8px 0 0;font-size:11px;font-family:Arial,sans-serif;">
               <a href="${REF_LINK}" style="color:#f06522;text-decoration:none;">caracalsafaris.com</a>

@@ -6,42 +6,41 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "About Caracal Safaris",
+  title: "About",
   description:
-    "Caracal Safaris was born in the landscape — decades of guiding across Zimbabwe, Zambia and Botswana, built on local expertise, private journeys and deep conservation values.",
+    "Caracal Africa Safaris is a Victoria Falls–based guiding team leading private safaris across Zimbabwe, Zambia and Botswana.",
 };
 
 const values = [
   {
-    title: "Local Knowledge",
+    title: "Guides who live here",
     description:
-      "Our guides have lived and worked in the Victoria Falls Triangle for decades. They know the rain, the seasons, the animals, and the people.",
+      "Our team works these roads and parks year-round. Season, water levels and wildlife movement shape how we plan each day.",
   },
   {
-    title: "Truly Private",
+    title: "Private by default",
     description:
-      "Every journey is yours alone. Your vehicle, your guide, your pace. No shared transfers, no group tours.",
+      "Your vehicle and your guide. We don’t fold you into shared transfers or fixed group circuits.",
   },
   {
-    title: "Seamless Borders",
+    title: "Borders handled for you",
     description:
-      "Dual-licensed and cross-border accredited. We handle all logistics between Zimbabwe, Zambia, and Botswana.",
+      "Zimbabwe, Zambia and Botswana in one continuous safari — paperwork and timing managed so you stay focused on the bush.",
   },
   {
-    title: "Conservation First",
+    title: "Partners who care for place",
     description:
-      "We work with properties and communities committed to conservation and responsible tourism.",
+      "We favour lodges and operators invested in conservation and fair community benefit.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero — dark overlay, text stays white */}
       <section className="relative h-[60vh] min-h-[400px] flex items-end pb-20 overflow-hidden">
         <Image
           src="/images/elephant.jpeg"
-          alt="Elephant in the wild"
+          alt="Elephant in Hwange country"
           fill
           className="object-cover"
           priority
@@ -49,43 +48,38 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/80" />
         <div className="relative z-10 container-luxury">
-          <SectionLabel>About Caracal Safaris</SectionLabel>
+          <SectionLabel>About Caracal Africa Safaris</SectionLabel>
           <h1
             className="text-white text-5xl md:text-7xl leading-none"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
           >
-            Born in the
+            Guided from
             <br />
             <span className="text-[var(--accent)] italic" style={{ fontFamily: "var(--font-editorial)" }}>
-              landscape.
+              Victoria Falls home ground.
             </span>
           </h1>
         </div>
       </section>
 
-      {/* Story */}
       <SectionWrapper background="charcoal">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
-            <SectionLabel>Our Story</SectionLabel>
+            <SectionLabel>Our story</SectionLabel>
             <h2
               className="text-[var(--fg)] text-4xl mb-8"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Raised on the banks of the Zambezi
+              Built where the Zambezi runs
             </h2>
             <p className="text-[var(--fg-70)] leading-relaxed mb-6">
-              Caracal Safaris grew out of a simple belief: that the
-              Victoria Falls Triangle — spanning Zimbabwe, Zambia, and Botswana —
-              is one of the world&apos;s greatest wilderness experiences, and that
-              most visitors only see a fraction of it.
+              Caracal Africa Safaris started with guides who already knew this
+              corner of southern Africa — the Falls, the river, Hwange and Chobe —
+              and wanted guests to experience it with the same continuity locals enjoy.
             </p>
             <p className="text-[var(--fg-60)] leading-relaxed">
-              Our team of dual-licensed guides has spent decades navigating this
-              terrain. We have built relationships with the best lodges,
-              conservation projects, and community experiences across all three
-              countries — so that your journey is seamless, private, and
-              genuinely immersive.
+              Today we design private safaris that cross borders cleanly, keep
+              group sizes small, and leave room for wildlife timing to lead the day.
             </p>
           </ScrollReveal>
 
@@ -93,7 +87,7 @@ export default function AboutPage() {
             <div className="relative h-[420px] overflow-hidden rounded-sm">
               <Image
                 src="/images/simunye.jpeg"
-                alt="The Caracal Safaris experience"
+                alt="Evening at a Caracal-hosted lodge experience"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -103,15 +97,14 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      {/* Values */}
       <SectionWrapper background="dark">
         <ScrollReveal className="mb-14">
-          <SectionLabel>Why Caracal Safaris</SectionLabel>
+          <SectionLabel>Why travel with us</SectionLabel>
           <h2
             className="text-[var(--fg)] text-4xl md:text-5xl max-w-lg"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            What makes us different
+            What guests notice
           </h2>
         </ScrollReveal>
 
@@ -132,7 +125,6 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      {/* CTA */}
       <SectionWrapper background="charcoal">
         <div className="text-center">
           <ScrollReveal>
@@ -140,16 +132,16 @@ export default function AboutPage() {
               className="text-[var(--fg)] text-4xl md:text-5xl mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Come journey with us
+              Talk through your dates
             </h2>
             <p className="text-[var(--fg-60)] mb-10 max-w-lg mx-auto">
-              Every journey is personal. Let&apos;s talk about yours.
+              Share how you like to travel — we&apos;ll outline a clear safari plan.
             </p>
             <Link
               href="/plan-your-journey"
               className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-10 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
             >
-              Plan Your Journey
+              Start planning
             </Link>
           </ScrollReveal>
         </div>

@@ -37,7 +37,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     template: `%s | ${siteConfig.name}`,
-    default: `${siteConfig.name} - Private Safaris in Zimbabwe, Zambia & Botswana`,
+    default: `${siteConfig.name} - Private safaris across Zimbabwe, Zambia and Botswana`,
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),

@@ -106,14 +106,14 @@ export default function EnquiryForm() {
           className="text-[var(--fg)] text-4xl mb-4"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Your journey begins.
+          Your enquiry is with us.
         </h2>
         <p className="text-[var(--fg-60)] mb-10 max-w-md mx-auto">
           We&apos;ve received your enquiry and will be in touch within 24 hours.
           For immediate assistance, reach us on WhatsApp.
         </p>
         <a
-          href={`https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(`Hello Caracal Safaris, I just submitted a journey enquiry for ${data.destinations.join(", ")}.`)}`}
+          href={`https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(`Hello Caracal Africa Safaris, I just submitted a journey enquiry for ${data.destinations.join(", ")}.`)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded font-semibold hover:opacity-90 transition-opacity"

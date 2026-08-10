@@ -8,39 +8,38 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 export const metadata: Metadata = {
   title: "The Journey",
   description:
-    "Understand the Caracal Safaris journey — from private consultation to seamless cross-border safari across Zimbabwe, Zambia and Botswana.",
+    "How a Caracal Africa Safaris private safari works — from first brief to cross-border days in Zimbabwe, Zambia and Botswana.",
 };
 
 const packages = [
   {
     name: "2–4 Day Escape",
-    tagline: "A taste of the Triangle",
-    includes: ["Victoria Falls experience", "1–2 activities", "Luxury lodge stay", "Private guide"],
-    ideal: "Short breaks, first-time visitors",
+    tagline: "Falls-focused with room to breathe",
+    includes: ["Victoria Falls experiences", "1–2 activities", "Lodge stay", "Private guide"],
+    ideal: "Short stays and first visits",
   },
   {
     name: "5–7 Day Signature",
-    tagline: "The complete experience",
-    includes: ["Victoria Falls + one safari destination", "Cross-border transfer", "3–5 curated experiences", "Private guide throughout"],
-    ideal: "Couples, honeymooners, small groups",
+    tagline: "Falls plus one wildlife region",
+    includes: ["Falls + Hwange or Chobe", "Cross-border transfer", "3–5 activities", "Private guide throughout"],
+    ideal: "Couples, honeymoons, small groups",
     featured: true,
   },
   {
     name: "8–12 Day Immersion",
-    tagline: "Africa without compromise",
-    includes: ["Victoria Falls + Chobe + Hwange", "Full cross-border journey", "Walking, boat & game drive safaris", "Bespoke itinerary"],
-    ideal: "Serious travellers, wildlife enthusiasts",
+    tagline: "The full Caracal circuit",
+    includes: ["Falls + Chobe + Hwange", "Full cross-border route", "Boat, drive & walk options", "Bespoke pacing"],
+    ideal: "Wildlife enthusiasts and longer stays",
   },
 ];
 
 export default function JourneyPage() {
   return (
     <>
-      {/* Hero — dark overlay, text stays white */}
       <section className="relative h-[60vh] min-h-[400px] flex items-end pb-20 overflow-hidden">
         <Image
           src="/images/sunset-cruise.jpeg"
-          alt="Sunset cruise on the Zambezi"
+          alt="Sunset on the Zambezi"
           fill
           className="object-cover"
           priority
@@ -48,12 +47,12 @@ export default function JourneyPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/80" />
         <div className="relative z-10 container-luxury">
-          <SectionLabel>The Journey</SectionLabel>
+          <SectionLabel>How we travel</SectionLabel>
           <h1
             className="text-white text-5xl md:text-7xl leading-none"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
           >
-            One journey.
+            One guide.
             <br />
             <span className="text-[var(--accent)] italic" style={{ fontFamily: "var(--font-editorial)" }}>
               Three countries.
@@ -62,26 +61,24 @@ export default function JourneyPage() {
         </div>
       </section>
 
-      {/* Philosophy */}
       <SectionWrapper background="charcoal">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
-            <SectionLabel>Our Approach</SectionLabel>
+            <SectionLabel>Our approach</SectionLabel>
             <h2
               className="text-[var(--fg)] text-4xl md:text-5xl mb-8 leading-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Private, seamless, unforgettable
+              Private days, continuous route
             </h2>
             <p className="text-[var(--fg-70)] leading-relaxed mb-6">
-              The Victoria Falls Triangle — Zimbabwe, Zambia, and Botswana — is one
-              contiguous wilderness. Most operators treat the borders as barriers.
-              We treat them as opportunities.
+              Zimbabwe, Zambia and Botswana sit in one wildlife and river corridor.
+              We plan the sequence so borders feel like a change of scenery — not a reset of your trip.
             </p>
             <p className="text-[var(--fg-60)] leading-relaxed">
-              With dual-licensed guides and established relationships across all
-              three countries, Caracal Safaris moves you through this landscape without friction.
-              One vehicle, one guide, one uninterrupted story.
+              Your Caracal guide stays with you. Lodges, activities and transfer windows
+              are booked to match how you like to move: early starts for wildlife, slower
+              mornings when you want them.
             </p>
           </ScrollReveal>
 
@@ -99,15 +96,14 @@ export default function JourneyPage() {
         </div>
       </SectionWrapper>
 
-      {/* Journey packages */}
       <SectionWrapper background="dark">
         <ScrollReveal className="mb-14">
-          <SectionLabel>Journey Options</SectionLabel>
+          <SectionLabel>Safari lengths</SectionLabel>
           <h2
             className="text-[var(--fg)] text-4xl md:text-5xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Choose your length
+            Pick a frame — we refine the details
           </h2>
         </ScrollReveal>
 
@@ -123,7 +119,7 @@ export default function JourneyPage() {
               >
                 {pkg.featured && (
                   <span className="text-[var(--accent)] text-xs tracking-widest uppercase mb-4 block">
-                    Most Popular
+                    Most requested
                   </span>
                 )}
                 <h3
@@ -155,7 +151,7 @@ export default function JourneyPage() {
                       : "border border-[var(--fg-20)] text-[var(--fg)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
                   }`}
                 >
-                  Plan this journey
+                  Enquire about this length
                 </Link>
               </div>
             </ScrollReveal>
@@ -163,7 +159,6 @@ export default function JourneyPage() {
         </div>
       </SectionWrapper>
 
-      {/* CTA */}
       <SectionWrapper background="charcoal">
         <div className="text-center">
           <ScrollReveal>
@@ -171,16 +166,16 @@ export default function JourneyPage() {
               className="text-[var(--fg)] text-4xl md:text-5xl mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Ready to begin?
+              Ready to outline dates?
             </h2>
             <p className="text-[var(--fg-60)] mb-10 max-w-lg mx-auto">
-              Tell us your dream. We will build the rest.
+              Send a short brief — we reply with a clear proposed route.
             </p>
             <Link
               href="/plan-your-journey"
               className="inline-block bg-[var(--accent)] text-[var(--accent-fg)] px-10 py-4 rounded text-sm font-semibold hover:bg-[var(--accent-hover)] transition-colors"
             >
-              Plan Your Journey
+              Start planning
             </Link>
           </ScrollReveal>
         </div>

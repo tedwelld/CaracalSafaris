@@ -8,7 +8,7 @@ import { siteConfig } from "@/data/siteConfig";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Caracal Safaris. Start your WhatsApp chat, send an enquiry, or schedule a consultation.",
+    "Contact Caracal Africa Safaris — WhatsApp, email or a planning form for private safaris from Victoria Falls.",
 };
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
       <SectionWrapper background="charcoal">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <ScrollReveal>
-            <SectionLabel>Get in Touch</SectionLabel>
+            <SectionLabel>Get in touch</SectionLabel>
             <h1
               className="text-[var(--fg)] text-5xl md:text-6xl mb-8 leading-tight"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
@@ -27,13 +27,12 @@ export default function ContactPage() {
               Let&apos;s plan
               <br />
               <span className="text-[var(--accent)] italic" style={{ fontFamily: "var(--font-editorial)" }}>
-                your journey.
+                your safari.
               </span>
             </h1>
             <p className="text-[var(--fg-60)] leading-relaxed mb-10 max-w-md">
-              Whether you&apos;re ready to book or just beginning to dream, we would
-              love to hear from you. Reach us on WhatsApp, email, or submit your
-              enquiry and we will be in touch within 24 hours.
+              Whether you have firm dates or are still exploring options, message us.
+              We reply within 24 hours with next steps.
             </p>
 
             {/* Quick Actions */}

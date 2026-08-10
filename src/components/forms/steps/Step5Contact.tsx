@@ -44,7 +44,7 @@ export default function Step5Contact({ data, update, isSubmitting }: Props) {
         className="text-[var(--fg)] text-3xl md:text-4xl mb-3"
         style={{ fontFamily: "var(--font-display)" }}
       >
-        Almost there.
+        Almost done.
       </h2>
       <p className="text-[var(--fg-50)] mb-10">Tell us how to reach you and we&apos;ll be in touch within 24 hours.</p>
 
@@ -124,7 +124,7 @@ export default function Step5Contact({ data, update, isSubmitting }: Props) {
           disabled={isSubmitting || !data.fullName || !data.email || !data.termsAccepted}
           className="w-full bg-[var(--accent)] text-[var(--accent-fg)] py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300"
         >
-          {isSubmitting ? "Sending your enquiry..." : "Plan My Journey →"}
+          {isSubmitting ? "Sending your enquiry..." : "Send my enquiry →"}
         </button>
       </div>
     </div>

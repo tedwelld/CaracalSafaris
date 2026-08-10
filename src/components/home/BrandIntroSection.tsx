@@ -8,32 +8,29 @@ export default function BrandIntroSection() {
   return (
     <SectionWrapper id="about-intro" background="charcoal">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        {/* Left — text */}
         <ScrollReveal direction="left">
-          <SectionLabel>Who We Are</SectionLabel>
+          <SectionLabel>Who we are</SectionLabel>
           <h2
             className="text-[var(--fg)] text-4xl md:text-5xl leading-tight mb-8"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Africa is not a destination.
+            Not a brochure itinerary.
             <br />
             <span className="text-[var(--accent)] italic" style={{ fontFamily: "var(--font-editorial)" }}>
-              It is a state of wonder.
+              A safari shaped around you.
             </span>
           </h2>
           <p className="text-[var(--fg-70)] leading-relaxed mb-6 text-lg">
-            Caracal Safaris is a private, fully guided safari experience rooted in the heart
-            of the Victoria Falls Triangle. We operate across Zimbabwe, Zambia, and Botswana —
-            three countries, one seamless journey.
+            Caracal Africa Safaris is a Victoria Falls–based team of private guides.
+            We lead small groups and families across Zimbabwe, Zambia and Botswana —
+            with the same guide, the same vehicle, and a plan written for how you travel.
           </p>
           <p className="text-[var(--fg-60)] leading-relaxed text-base">
-            Our dual-licensed guides move seamlessly between borders. Your vehicle, your guide,
-            your rhythm — one uninterrupted journey through the Victoria Falls Triangle,
-            crafted entirely around you.
+            Cross-border paperwork, lodge timing and wildlife pacing are handled for you.
+            You bring curiosity; we bring the road knowledge that only comes from living here.
           </p>
         </ScrollReveal>
 
-        {/* Right — counters */}
         <ScrollReveal direction="right" delay={0.1}>
           <div className="grid grid-cols-2 gap-8">
             {siteConfig.counters.map((c) => (

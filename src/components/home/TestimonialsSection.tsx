@@ -27,12 +27,12 @@ export default function TestimonialsSection() {
     >
       <div className="container-luxury">
         <div className="text-center mb-12">
-          <SectionLabel>Traveller Stories</SectionLabel>
+          <SectionLabel>Guest notes</SectionLabel>
           <h2
             className="text-[var(--fg)] text-4xl md:text-5xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            From those who have journeyed
+            What travellers tell us after
           </h2>
         </div>
 

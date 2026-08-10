@@ -112,12 +112,12 @@ const templates: EmailTemplate[] = [
         "Your Caracal Safaris Journey Enquiry",
         `
         <h2 style="margin:0 0 16px;font-size:26px;color:#1f140e;font-weight:normal;">Thank you, ${escapeHtml(firstName(d.fullName))}.</h2>
-        <p style="margin:0 0 8px;font-size:16px;color:#3a3a3a;line-height:1.7;font-style:italic;">&ldquo;Africa is not a destination. It is a state of wonder.&rdquo;</p>
+        <p style="margin:0 0 8px;font-size:16px;color:#3a3a3a;line-height:1.7;font-style:italic;">&ldquo;A safari shaped around how you travel — not a fixed circuit.&rdquo;</p>
         <p style="margin:0 0 28px;font-size:13px;color:#6b6b6b;font-family:Arial,sans-serif;">
           We&rsquo;ve received your journey enquiry and will be in touch within 24 hours. Reference: <strong style="color:#1f140e;">${d.ref}</strong>
         </p>
         ${detailTable("Journey Details", enquirySummaryRows(d))}
-        <p style="margin:32px 0 0;font-size:14px;color:#3a3a3a;">Warm regards,<br/><strong>The Caracal Safaris Team</strong></p>
+        <p style="margin:32px 0 0;font-size:14px;color:#3a3a3a;">Warm regards,<br/><strong>The Caracal Africa Safaris Team</strong></p>
         `
       );
     },
@@ -169,7 +169,7 @@ const templates: EmailTemplate[] = [
         <p style="margin:24px 0 0;font-size:13px;color:#6b6b6b;font-family:Arial,sans-serif;">
           ${b.paymentNote || "No payment has been taken yet. We will contact you with next steps."}
         </p>
-        <p style="margin:28px 0 0;font-size:14px;color:#3a3a3a;">Warm regards,<br/><strong>The Caracal Safaris Team</strong></p>
+        <p style="margin:28px 0 0;font-size:14px;color:#3a3a3a;">Warm regards,<br/><strong>The Caracal Africa Safaris Team</strong></p>
         `
       );
     },
@@ -339,7 +339,7 @@ const templates: EmailTemplate[] = [
       return emailShell(
         "Thank you",
         `<h2 style="margin:0 0 12px;font-size:22px;color:#1f140e;">Thank you, ${escapeHtml(firstName(b.fullName))}</h2>
-         <p style="font-family:Arial,sans-serif;color:#3a3a3a;line-height:1.7;">It was a privilege to share the Smoke That Thunders with you. We hope to welcome you back.</p>`
+         <p style="font-family:Arial,sans-serif;color:#3a3a3a;line-height:1.7;">It was a privilege to guide you. We hope to welcome you back to the Zambezi.</p>`
       );
     },
     renderText: (ctx) => `Thank you for travelling with Caracal Safaris (${asBooking(ctx).ref}).`,

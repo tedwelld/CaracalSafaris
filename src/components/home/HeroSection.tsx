@@ -32,7 +32,7 @@ export default function HeroSection() {
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       <Image
         src="/images/victoria-falls.jpeg"
-        alt="Victoria Falls — The Smoke That Thunders"
+        alt="Victoria Falls spray rising above the Zambezi gorge"
         fill
         className="object-cover"
         priority
@@ -57,7 +57,7 @@ export default function HeroSection() {
           className="text-white text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mb-6"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
-          The Smoke That Thunders.
+          See Africa with those who live it.
         </h1>
 
         <motion.p
@@ -67,7 +67,7 @@ export default function HeroSection() {
           className="text-white/80 text-lg md:text-xl max-w-xl mx-auto mb-12"
           style={{ fontFamily: "var(--font-editorial)", fontStyle: "italic" }}
         >
-          Private journeys through Zimbabwe, Zambia &amp; Botswana.
+          Private safaris led by local guides — across Zimbabwe, Zambia &amp; Botswana.
         </motion.p>
 
         <motion.div
@@ -80,14 +80,14 @@ export default function HeroSection() {
             href="/plan-your-journey"
             className="bg-[var(--accent)] text-[var(--accent-fg)] px-8 py-4 rounded text-sm font-semibold tracking-wide hover:bg-[var(--accent-hover)] transition-colors duration-300 min-w-[200px] text-center"
           >
-            Plan Your Journey
+            Start planning
           </Link>
           <button
             type="button"
             onClick={() => setAvailOpen(true)}
             className="text-white border border-white/40 px-8 py-4 rounded text-sm tracking-wide hover:border-white hover:bg-white/5 transition-all duration-300 min-w-[200px] text-center cursor-pointer"
           >
-            Check Availability
+            Check availability
           </button>
         </motion.div>
       </div>

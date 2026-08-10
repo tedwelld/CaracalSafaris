@@ -46,19 +46,19 @@ export default function DestinationsPreviewSection() {
   return (
     <SectionWrapper id="destinations" background="charcoal">
       <ScrollReveal className="mb-12">
-        <SectionLabel>The Victoria Falls Triangle</SectionLabel>
+        <SectionLabel>Where we take you</SectionLabel>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <h2
             className="text-[var(--fg)] text-4xl md:text-5xl max-w-lg"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Four destinations. One journey.
+            Four places. One Caracal guide.
           </h2>
           <Link
             href="/destinations"
             className="text-[var(--accent)] text-sm tracking-wide hover:text-[var(--accent-hover)] transition-colors"
           >
-            View all destinations →
+            Explore destinations →
           </Link>
         </div>
       </ScrollReveal>

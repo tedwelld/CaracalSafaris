@@ -23,7 +23,7 @@ const templates: WhatsAppTemplate[] = [
     renderMessage: (ctx) => {
       const d = asEnquiry(ctx);
       const dest = d.destinations?.join(", ") || "Victoria Falls Triangle";
-      return `Hello Caracal Safaris, I submitted an enquiry${d.ref ? ` (${d.ref})` : ""} for ${dest}. Looking forward to hearing from you.`;
+      return `Hello Caracal Africa Safaris, I submitted an enquiry${d.ref ? ` (${d.ref})` : ""} for ${dest}. Looking forward to hearing from you.`;
     },
   },
   {
@@ -38,7 +38,7 @@ const templates: WhatsAppTemplate[] = [
     renderMessage: (ctx) => {
       const b = asBooking(ctx);
       const names = b.lines.map((l) => `${l.name}×${l.quantity}`).join(", ");
-      return `Hello Caracal Safaris, I submitted booking ${b.ref} for: ${names}. Total indicative $${b.subtotalUsd} USD. Please confirm availability and payment.`;
+      return `Hello Caracal Africa Safaris, I submitted booking ${b.ref} for: ${names}. Total indicative $${b.subtotalUsd} USD. Please confirm availability and payment.`;
     },
   },
   {

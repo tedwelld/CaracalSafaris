@@ -13,7 +13,7 @@ export function WhatsAppBookButton({
 }) {
   const digits = siteConfig.whatsappNumber.replace(/\D/g, "");
   const text = tourName
-    ? `Hello Caracal Safaris, I'd like to book: ${tourName}`
+    ? `Hello Caracal Africa Safaris, I'd like to book: ${tourName}`
     : siteConfig.whatsappMessage;
   const href = `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
 

@@ -20,11 +20,11 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
   {
     slug: "wonder",
-    title: "Into the Mist: Victoria Falls Wonder",
+    title: "Falls days: spray, paths and river light",
     excerpt:
       "Stand at the edge of one of the world's greatest natural wonders — rainforest walks, Livingstone Island, and sunset on the Zambezi.",
     date: "2026-05-12",
-    author: "Caracal Safaris",
+    author: "Caracal Africa Safaris",
     image: "/images/rainforest2.jpeg",
     body:
       "Stand at the edge of one of the world's greatest natural wonders. Walk through the rainforest, feel the spray, swim at Livingstone Island, and drift downstream as the sun melts into the Zambezi.",
@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
         id: "overview",
         label: "Overview",
         content:
-          "Victoria Falls — Mosi-oa-Tunya, the Smoke That Thunders — is the heart of the Caracal triangle. On the Zimbabwe and Zambia sides alike, rainforest paths lead to lookout points where spray rises like mist and the gorge opens beneath your feet.\n\nWe pace the day around light, water levels and your energy: early rainforest walks, island swims when the river allows, and unhurried time at the viewpoints that make the Falls unforgettable.",
+          "Victoria Falls — Mosi-oa-Tunya, the Victoria Falls — is the heart of the Caracal triangle. On the Zimbabwe and Zambia sides alike, rainforest paths lead to lookout points where spray rises like mist and the gorge opens beneath your feet.\n\nWe pace the day around light, water levels and your energy: early rainforest walks, island swims when the river allows, and unhurried time at the viewpoints that make the Falls unforgettable.",
       },
       {
         id: "highlights",
@@ -51,11 +51,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "wild",
-    title: "Track the Big Five",
+    title: "Hwange and Chobe wildlife days",
     excerpt:
       "Open-vehicle game drives through Hwange and Chobe. Boat safaris past elephant-lined banks. Walking safaris with expert trackers.",
     date: "2026-04-28",
-    author: "Caracal Safaris",
+    author: "Caracal Africa Safaris",
     image: "/images/elephant-eye.jpeg",
     body:
       "Open-vehicle game drives through Hwange and Chobe. Boat safaris past elephant-lined banks. Walking safaris with expert trackers who read the land like a language.",
@@ -82,11 +82,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "thrill",
-    title: "The Edge of the Zambezi",
+    title: "Gorge days on the Zambezi",
     excerpt:
       "Grade 5 white water. Bungee from the Victoria Falls Bridge. Zip across the gorge. Fly over the Falls in a microlight.",
     date: "2026-04-02",
-    author: "Caracal Safaris",
+    author: "Caracal Africa Safaris",
     image: "/images/rafting.jpeg",
     body:
       "Grade 5 white water. Bungee from the Victoria Falls Bridge. Zip across the gorge. Fly over the Falls in a microlight. The Zambezi Gorge is Africa's adventure playground.",
@@ -101,7 +101,7 @@ export const blogPosts: BlogPost[] = [
         id: "highlights",
         label: "Highlights",
         content:
-          "White-Water Rafting — World-class rapids with names that earn their reputation.\n\nBungee Jumping — 111 metres from the Victoria Falls Bridge, border beneath your feet.\n\nZipline & Gorge Swing — Cross or plunge into the gorge with professional operators.\n\nMicrolight Flight — See the Smoke That Thunders from above at golden hour.",
+          "White-Water Rafting — World-class rapids with names that earn their reputation.\n\nBungee Jumping — 111 metres from the Victoria Falls Bridge, border beneath your feet.\n\nZipline & Gorge Swing — Cross or plunge into the gorge with professional operators.\n\nMicrolight Flight — See the Victoria Falls from above at golden hour.",
       },
       {
         id: "safety",
@@ -113,11 +113,11 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "culture",
-    title: "Stories Around the Fire",
+    title: "Evenings with local hosts",
     excerpt:
-      "Boma evenings under the stars. Community visits. Storytelling with elders. Traditional dance and food — Africa's humanity, up close.",
+      "Boma evenings under the stars. Community visits. Storytelling with elders. Traditional dance and food — local hospitality, up close.",
     date: "2026-03-15",
-    author: "Caracal Safaris",
+    author: "Caracal Africa Safaris",
     image: "/images/simunye.jpeg",
     body:
       "Boma evenings under the stars. Community visits to local villages. Storytelling with elders. Traditional dance and food. Africa's humanity, up close and unhurried.",
@@ -154,25 +154,25 @@ const EXPERIENCE_META: Record<
 > = {
   wonder: {
     label: "Wonder",
-    title: "Into the Mist",
+    title: "Falls, spray & rainforest paths",
     destinations: ["victoria-falls", "livingstone"],
     highlights: ["Rainforest Walk", "Livingstone Island", "Sunset Cruise", "Devil's Pool"],
   },
   wild: {
     label: "Wild",
-    title: "Track the Big Five",
+    title: "Open-vehicle game country",
     destinations: ["chobe", "hwange"],
     highlights: ["Game Drives", "Boat Safaris", "Walking Safaris", "Night Drives"],
   },
   thrill: {
     label: "Thrill",
-    title: "The Edge of the Zambezi",
+    title: "Gorge adrenaline, on your terms",
     destinations: ["victoria-falls", "livingstone"],
     highlights: ["White-Water Rafting", "Bungee Jumping", "Zipline", "Microlight Flight", "Gorge Swing"],
   },
   culture: {
     label: "Culture",
-    title: "Stories Around the Fire",
+    title: "Evenings with local hosts",
     destinations: ["victoria-falls", "livingstone", "hwange"],
     highlights: ["Boma Evenings", "Village Visits", "Traditional Dance", "Local Cuisine"],
   },

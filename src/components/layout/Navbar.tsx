@@ -463,7 +463,7 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className={`px-8 py-3 rounded text-sm font-semibold transition-colors ${t.mobileCta}`}
               >
-                Plan Your Journey
+                Start planning
               </Link>
               <a
                 href={`https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`}

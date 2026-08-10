@@ -6,25 +6,25 @@ const pillars = [
   {
     image: "/images/rainforest.jpeg",
     category: "Wonder",
-    title: "The Smoke That Thunders",
+    title: "Falls, spray & rainforest paths",
     description:
-      "Victoria Falls, Livingstone Island, rainforest walks. Where nature overwhelms in the best possible way.",
+      "Walk the gorge rim, feel the mist, and take quieter viewpoints most day-trippers never reach.",
     href: "/blog/wonder",
   },
   {
     image: "/images/lion.jpeg",
     category: "Wild",
-    title: "Track the Big Five",
+    title: "Open-vehicle game country",
     description:
-      "Hwange. Chobe. Open vehicles, expert trackers, and Africa's wildlife on its own terms.",
+      "Hwange and Chobe with trackers who read the bush — elephant herds, lion country, and slow mornings at waterholes.",
     href: "/blog/wild",
   },
   {
     image: "/images/bungee.jpeg",
     category: "Thrill",
-    title: "The Edge of the Gorge",
+    title: "Gorge adrenaline, on your terms",
     description:
-      "Grade 5 rapids. Bungee from 111 metres. Ziplines. Microlight flights. The Zambezi Gorge is a playground.",
+      "Rafting, bridge jumps, ziplines and microlights — sequenced so the day still feels like a safari, not a queue.",
     href: "/blog/thrill",
   },
 ];
@@ -34,12 +34,12 @@ export default function ThreePillarsSection() {
     <section className="bg-[var(--bg)] section-padding transition-colors duration-400">
       <div className="container-luxury">
         <ScrollReveal className="mb-12">
-          <SectionLabel>Three Ways to Experience Africa</SectionLabel>
+          <SectionLabel>How a Caracal safari unfolds</SectionLabel>
           <h2
             className="text-[var(--fg)] text-4xl md:text-5xl max-w-lg"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Wonder. Wild. Thrill.
+            Wonder. Wildlife. Edge.
           </h2>
         </ScrollReveal>
 

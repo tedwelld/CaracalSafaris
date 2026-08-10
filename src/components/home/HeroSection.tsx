@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -9,6 +8,7 @@ import { CheckAvailabilityModal } from "@/components/bokun/CheckAvailabilityModa
 
 export default function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [availOpen, setAvailOpen] = useState(false);
 
   useEffect(() => {
@@ -28,17 +28,29 @@ export default function HeroSection() {
     );
   }, []);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    const play = video.play();
+    if (play) play.catch(() => {});
+  }, []);
+
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-      <Image
-        src="/images/victoria-falls.jpeg"
-        alt="Victoria Falls — The Smoke That Thunders"
-        fill
-        className="object-cover"
-        priority
-        quality={90}
-        sizes="100vw"
-      />
+      <video
+        ref={videoRef}
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/videos/hero-safari-poster.jpg"
+        aria-label="Safari wildlife — Botswana meerkats"
+      >
+        <source src="/videos/hero-safari.mp4" type="video/mp4" />
+      </video>
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/75" />
 
@@ -47,27 +59,38 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6 }}
-          className="text-[var(--accent)] text-xs tracking-[0.3em] uppercase mb-8"
+          className="text-white text-2xl sm:text-3xl md:text-4xl tracking-[0.04em] mb-5"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+        >
+          Caracal Safaris
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
+          className="text-[var(--accent)] text-xs tracking-[0.28em] uppercase mb-8"
         >
           Zimbabwe · Zambia · Botswana
         </motion.p>
 
         <h1
           ref={headlineRef}
-          className="text-white text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-none mb-6"
+          className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] mb-6"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
-          The Smoke That Thunders.
+          Private safaris. Wild Africa.
         </h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="text-white/80 text-lg md:text-xl max-w-xl mx-auto mb-12"
+          className="text-white/80 text-base md:text-lg max-w-lg mx-auto mb-12 leading-relaxed"
           style={{ fontFamily: "var(--font-editorial)", fontStyle: "italic" }}
         >
-          Private journeys through Zimbabwe, Zambia &amp; Botswana.
+          Expertly guided journeys to Victoria Falls, the Zambezi, and the
+          great game parks beyond.
         </motion.p>
 
         <motion.div

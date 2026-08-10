@@ -52,7 +52,7 @@ export default function CartDrawer() {
                 <div className="text-center py-16">
                   <p className="text-[var(--fg-50)] mb-6">Your cart is empty.</p>
                   <Link
-                    href="/#featured-tours"
+                    href="/experiences"
                     onClick={closeCart}
                     className="text-[var(--accent)] text-sm hover:text-[var(--accent-hover)]"
                   >
@@ -102,10 +102,10 @@ export default function CartDrawer() {
                   <span className="font-semibold text-foreground">{totalPrice} USD</span>
                 </div>
                 <p className="text-xs text-ink-soft">
-                  Complete booking from the product page checkout flow.
+                  Pick up checkout exactly where you left off.
                 </p>
                 <Link
-                  href={`/product/${items[0].productId}`}
+                  href={`/product/${items[0].productId}?resume=1&item=${encodeURIComponent(items[0].id)}`}
                   onClick={closeCart}
                   className="flex w-full items-center justify-center rounded bg-[var(--accent)] text-[var(--accent-fg)] px-4 py-3 text-sm font-semibold hover:bg-[var(--accent-hover)]"
                 >

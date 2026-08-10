@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import { Pi } from "@/components/Pi";
 import { Section } from "@/components/ui/Section";
@@ -483,34 +483,36 @@ export function ProductContent({
 
             {/* Sidebar */}
             <aside className="lg:sticky lg:top-24 lg:self-start" id="booking-sidebar">
-              <ProductBookingPanel
-                productId={productId}
-                title={title}
-                description={description}
-                excerpt={excerpt}
-                highlights={highlights}
-                inclusions={inclusions}
-                exclusions={exclusions}
-                knowBeforeYouGo={knowBeforeYouGo}
-                location={location}
-                meetingType={meetingType}
-                durationText={durationText}
-                difficulty={difficulty}
-                reviewRating={reviewRating}
-                reviewCount={reviewCount}
-                vendor={vendor}
-                bookingType={bookingType}
-                capacityType={capacityType}
-                maxParticipants={maxParticipants}
-                cancellationPolicy={cancellationPolicy}
-                requirements={requirements}
-                photoUrls={photos.length ? photos.map((p) => p.src) : undefined}
-                priceFrom={minPrice ? `${minPrice}` : undefined}
-                currency={currency}
-                availabilities={availabilities}
-                pricingCategories={pricingCategories}
-                startTimes={startTimes}
-              />
+              <Suspense fallback={null}>
+                <ProductBookingPanel
+                  productId={productId}
+                  title={title}
+                  description={description}
+                  excerpt={excerpt}
+                  highlights={highlights}
+                  inclusions={inclusions}
+                  exclusions={exclusions}
+                  knowBeforeYouGo={knowBeforeYouGo}
+                  location={location}
+                  meetingType={meetingType}
+                  durationText={durationText}
+                  difficulty={difficulty}
+                  reviewRating={reviewRating}
+                  reviewCount={reviewCount}
+                  vendor={vendor}
+                  bookingType={bookingType}
+                  capacityType={capacityType}
+                  maxParticipants={maxParticipants}
+                  cancellationPolicy={cancellationPolicy}
+                  requirements={requirements}
+                  photoUrls={photos.length ? photos.map((p) => p.src) : undefined}
+                  priceFrom={minPrice ? `${minPrice}` : undefined}
+                  currency={currency}
+                  availabilities={availabilities}
+                  pricingCategories={pricingCategories}
+                  startTimes={startTimes}
+                />
+              </Suspense>
             </aside>
           </div>
         </Container>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import SectionLabel from "@/components/ui/SectionLabel";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import OwnerSection from "@/components/shared/OwnerSection";
 
 export const metadata: Metadata = {
   title: "About",
@@ -97,7 +98,9 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="dark">
+      <OwnerSection variant="detailed" />
+
+      <SectionWrapper background="charcoal">
         <ScrollReveal className="mb-14">
           <SectionLabel>Why travel with us</SectionLabel>
           <h2
@@ -125,7 +128,7 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="charcoal">
+      <SectionWrapper background="dark">
         <div className="text-center">
           <ScrollReveal>
             <h2

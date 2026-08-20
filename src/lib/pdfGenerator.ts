@@ -285,7 +285,7 @@ export function generateClientPdf(data: EnquiryData, ref: string): Promise<Buffe
       .fontSize(9)
       .font("Helvetica")
       .text(
-        "We’ve received your journey enquiry and will be in touch within 24 hours. For immediate assistance, please reach us on WhatsApp at +263 78 927 6807.",
+        "We’ve received your journey enquiry and will be in touch within 24 hours. For immediate assistance, please reach us on WhatsApp at +263 783130805/ +263 711 909 853.",
         MARGIN, y,
         { width: TABLE_W }
       );

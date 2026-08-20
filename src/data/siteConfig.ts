@@ -12,7 +12,7 @@ export const siteConfig = {
     info: "info@caracalafricasafaris.com",
     reservations: "reservations@caracalafricasafaris.com",
   },
-  whatsappNumber: "+263789276807",
+  whatsappNumber: "+263711909853",
   whatsappMessage:
     "Hello Caracal Africa Safaris — I'd like help planning a private safari.",
   socials: {

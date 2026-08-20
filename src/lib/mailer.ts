@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
+import { siteConfig } from "@/data/siteConfig";
 
 interface AppSettings {
   emailSettings?: {
@@ -39,12 +40,22 @@ export const transporter = nodemailer.createTransport({
   socketTimeout:     25_000,
 });
 
-export const MAIL_FROM = `Caracal Africa Safaris <${cfg?.EmailUsername ?? process.env.EMAIL_USERNAME}>`;
+export const MAIL_FROM = `Caracal Africa Safaris <${cfg?.EmailUsername ?? process.env.EMAIL_USERNAME ?? siteConfig.emails.info}>`;
 
+/** Ops / system alerts */
 export const ADMIN_EMAILS: string[] =
   settings?.adminEmails ??
-  (process.env.ADMIN_EMAIL ?? "admin@caracalsafaris.com")
+  (process.env.ADMIN_EMAIL ?? siteConfig.emails.admin)
     .split(",")
-    .map((e) => e.trim());
+    .map((e) => e.trim())
+    .filter(Boolean);
 
-export const REF_LINK = cfg?.RefLink ?? process.env.EMAIL_REF_LINK ?? "https://caracalsafaris.com";
+/** Bookings, journey enquiries, reservation requests */
+export const RESERVATIONS_EMAILS: string[] =
+  (process.env.RESERVATIONS_EMAIL ?? siteConfig.emails.reservations)
+    .split(",")
+    .map((e) => e.trim())
+    .filter(Boolean);
+
+export const REF_LINK =
+  cfg?.RefLink ?? process.env.EMAIL_REF_LINK ?? siteConfig.url;

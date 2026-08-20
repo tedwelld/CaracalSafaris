@@ -53,15 +53,28 @@ export default function ContactPage() {
               </a>
 
               <a
-                href={`mailto:${siteConfig.email}`}
+                href={`mailto:${siteConfig.emails.info}`}
                 className="flex items-center gap-4 p-5 border border-[var(--fg-10)] rounded-sm hover:border-[var(--fg-30)] transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-full bg-[var(--fg-10)] flex items-center justify-center flex-shrink-0">
                   <i className="pi pi-envelope" style={{ color: "var(--accent)", fontSize: "18px" }} />
                 </div>
                 <div>
-                  <p className="text-[var(--fg)] font-medium">Send an Email</p>
-                  <p className="text-[var(--fg-50)] text-sm">{siteConfig.email}</p>
+                  <p className="text-[var(--fg)] font-medium">General enquiries</p>
+                  <p className="text-[var(--fg-50)] text-sm">{siteConfig.emails.info}</p>
+                </div>
+              </a>
+
+              <a
+                href={`mailto:${siteConfig.emails.reservations}`}
+                className="flex items-center gap-4 p-5 border border-[var(--fg-10)] rounded-sm hover:border-[var(--fg-30)] transition-all duration-300"
+              >
+                <div className="w-10 h-10 rounded-full bg-[var(--fg-10)] flex items-center justify-center flex-shrink-0">
+                  <i className="pi pi-calendar" style={{ color: "var(--accent)", fontSize: "18px" }} />
+                </div>
+                <div>
+                  <p className="text-[var(--fg)] font-medium">Reservations &amp; bookings</p>
+                  <p className="text-[var(--fg-50)] text-sm">{siteConfig.emails.reservations}</p>
                 </div>
               </a>
 

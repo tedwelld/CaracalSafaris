@@ -139,8 +139,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`mailto:${siteConfig.email}`} className={linkClass}>
-                  {siteConfig.email}
+                <a href={`mailto:${siteConfig.emails.info}`} className={linkClass}>
+                  {siteConfig.emails.info}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${siteConfig.emails.reservations}`} className={linkClass}>
+                  {siteConfig.emails.reservations}
                 </a>
               </li>
               <li className="text-[var(--fg-40)]">{siteConfig.location}</li>

@@ -36,7 +36,7 @@ export function emailShell(title: string, body: string) {
               Caracal Africa Safaris · Victoria Falls, Zimbabwe
             </p>
             <p style="margin:8px 0 0;font-size:11px;font-family:Arial,sans-serif;">
-              <a href="${REF_LINK}" style="color:#f06522;text-decoration:none;">caracalsafaris.com</a>
+              <a href="${REF_LINK}" style="color:#f06522;text-decoration:none;">caracalafricasafaris.com</a>
             </p>
           </td>
         </tr>

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { transporter, ADMIN_EMAILS } from "@/lib/mailer";
+import { transporter, RESERVATIONS_EMAILS } from "@/lib/mailer";
 import { generateAdminPdf, generateClientPdf, makeRef } from "@/lib/pdfGenerator";
 import { sendTemplate } from "@/lib/bokun/send";
 import { whatsappFromTemplate } from "@/lib/bokun/templates/whatsapp";
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 
     await Promise.all([
       sendTemplate("enquiry.admin", ctx, {
-        to: ADMIN_EMAILS,
+        to: RESERVATIONS_EMAILS,
         replyTo: data.email,
         attachments: adminPdf
           ? [

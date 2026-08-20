@@ -85,7 +85,7 @@ const templates: EmailTemplate[] = [
         `New Enquiry — ${d.fullName}`,
         `
         <h2 style="margin:0 0 4px;font-size:22px;color:#1f140e;font-weight:normal;">New Journey Enquiry</h2>
-        <p style="margin:0 0 4px;color:#f06522;font-size:13px;font-family:Arial,sans-serif;letter-spacing:0.1em;text-transform:uppercase;">Submitted via caracalsafaris.com</p>
+        <p style="margin:0 0 4px;color:#f06522;font-size:13px;font-family:Arial,sans-serif;letter-spacing:0.1em;text-transform:uppercase;">Submitted via caracalafricasafaris.com</p>
         <p style="margin:0 0 24px;color:#aaaaaa;font-size:12px;font-family:Arial,sans-serif;">Ref: ${d.ref}</p>
         <table width="100%" cellpadding="0" cellspacing="0" style="background:#fbf4e8;border-radius:4px;margin-bottom:24px;">
           <tr><td style="padding:20px;">

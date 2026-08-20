@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { transporter, ADMIN_EMAILS } from "@/lib/mailer";
+import { transporter, RESERVATIONS_EMAILS } from "@/lib/mailer";
 import { makeRef } from "@/lib/pdfGenerator";
 import { getActivityById } from "@/data/activities";
 import { sendTemplate } from "@/lib/bokun/send";
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
 
     await Promise.all([
       sendTemplate("booking.admin", templateCtx, {
-        to: ADMIN_EMAILS,
+        to: RESERVATIONS_EMAILS,
         replyTo: data.email,
       }),
       sendTemplate("booking.confirmation", templateCtx, {

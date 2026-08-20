@@ -1,11 +1,17 @@
 export const siteConfig = {
   name: "Caracal Africa Safaris",
   tagline: "Born on the Zambezi. Built for you.",
-  url: "https://www.caracalsafaris.com",
+  url: "https://www.caracalafricasafaris.com",
   logo: "/images/caracal-logo.png",
   description:
     "Locally led private safaris across Zimbabwe, Zambia and Botswana — crafted around your pace, with guides who live this landscape.",
-  email: "admin@caracalsafaris.com",
+  /** Public general contact (contact page / footer default). */
+  email: "info@caracalafricasafaris.com",
+  emails: {
+    admin: "admin@caracalafricasafaris.com",
+    info: "info@caracalafricasafaris.com",
+    reservations: "reservations@caracalafricasafaris.com",
+  },
   whatsappNumber: "+263789276807",
   whatsappMessage:
     "Hello Caracal Africa Safaris — I'd like help planning a private safari.",

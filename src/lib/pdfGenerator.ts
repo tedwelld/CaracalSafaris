@@ -153,7 +153,7 @@ function drawPageFooter(doc: InstanceType<typeof PDFDocument>) {
     .font("Helvetica")
     .opacity(0.5)
     .text(
-      "Caracal Africa Safaris  ·  Victoria Falls, Zimbabwe  ·  caracalsafaris.com",
+      "Caracal Africa Safaris  ·  Victoria Falls, Zimbabwe  ·  caracalafricasafaris.com",
       MARGIN,
       pageH - 22,
       { align: "center", width: PAGE_W - MARGIN * 2 }
@@ -198,7 +198,7 @@ export function generateAdminPdf(data: EnquiryData, ref: string): Promise<Buffer
       .fillColor(GOLD)
       .fontSize(9)
       .font("Helvetica")
-      .text("Submitted via caracalsafaris.com", MARGIN, y);
+      .text("Submitted via caracalafricasafaris.com", MARGIN, y);
     y += 30;
 
     /* ── Contact Details table ── */
